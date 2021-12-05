@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:id="@+id/navBar"
+    android:theme="@style/Theme.LemmeShoyu.Button"
+    android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/homeNavButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:text="Home"
+            android:textSize="12sp"
+            />
+
+        <Button
+            android:id="@+id/searchNavButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:text="Search"
+            android:textSize="12sp"
+            />
+
+        <Button
+            android:id="@+id/myFridgeNavButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:text="My Fridge"
+            android:textSize="12sp"
+            />
+</LinearLayout>

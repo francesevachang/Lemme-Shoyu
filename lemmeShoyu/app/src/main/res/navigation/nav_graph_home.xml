@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_home"
+    app:startDestination="@id/RecipeFoldersFragment">
+
+    <fragment
+        android:id="@+id/RecipeFoldersFragment"
+        android:name="edu.uw.peihsi5.lemmeshoyu.RecipeFoldersFragment"
+        android:label="RecipeFoldersFragment"
+        tools:layout="@layout/fragment_recipe_folders">
+
+        <action
+            android:id="@+id/action_RecipeFoldersFragment_to_RecipeListInFolderFragment"
+            app:destination="@id/RecipeListInFolderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/RecipeListInFolderFragment"
+        android:name="edu.uw.peihsi5.lemmeshoyu.RecipeListInFolderFragment"
+        android:label="RecipeListInFolderFragment"
+        tools:layout="@layout/fragment_recipe_list_in_folder">
+
+    </fragment>
+</navigation>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Pacy Wu/OneDrive/Desktop/UW Courses/2021 Fall/INFO 448/HW/group-final-project-a6-lemme-shoyu/lemmeShoyu/app/src/main/res/layout/activity_home.xml" value="0.16510416666666666" />
+        <entry key="..\:/Users/Pacy Wu/OneDrive/Desktop/UW Courses/2021 Fall/INFO 448/HW/group-final-project-a6-lemme-shoyu/lemmeShoyu/app/src/main/res/layout/activity_main.xml" value="0.2140625" />
+        <entry key="..\:/Users/Pacy Wu/OneDrive/Desktop/UW Courses/2021 Fall/INFO 448/HW/group-final-project-a6-lemme-shoyu/lemmeShoyu/app/src/main/res/layout/activity_my_fridge.xml" value="0.16458333333333333" />
+        <entry key="..\:/Users/Pacy Wu/OneDrive/Desktop/UW Courses/2021 Fall/INFO 448/HW/group-final-project-a6-lemme-shoyu/lemmeShoyu/app/src/main/res/layout/activity_search.xml" value="0.16458333333333333" />
+        <entry key="..\:/Users/Pacy Wu/OneDrive/Desktop/UW Courses/2021 Fall/INFO 448/HW/group-final-project-a6-lemme-shoyu/lemmeShoyu/app/src/main/res/layout/content_main.xml" value="0.12364130434782608" />
+        <entry key="..\:/Users/Pacy Wu/OneDrive/Desktop/UW Courses/2021 Fall/INFO 448/HW/group-final-project-a6-lemme-shoyu/lemmeShoyu/app/src/main/res/layout/fragment_first.xml" value="0.2140625" />
+        <entry key="..\:/Users/Pacy Wu/OneDrive/Desktop/UW Courses/2021 Fall/INFO 448/HW/group-final-project-a6-lemme-shoyu/lemmeShoyu/app/src/main/res/layout/fragment_recipe_folders.xml" value="0.19375" />
+        <entry key="..\:/Users/Pacy Wu/OneDrive/Desktop/UW Courses/2021 Fall/INFO 448/HW/group-final-project-a6-lemme-shoyu/lemmeShoyu/app/src/main/res/layout/fragment_recipe_list_in_folder.xml" value="0.1828125" />
+        <entry key="..\:/Users/Pacy Wu/OneDrive/Desktop/UW Courses/2021 Fall/INFO 448/HW/group-final-project-a6-lemme-shoyu/lemmeShoyu/app/src/main/res/layout/fragment_second.xml" value="0.2140625" />
+        <entry key="..\:/Users/Pacy Wu/OneDrive/Desktop/UW Courses/2021 Fall/INFO 448/HW/group-final-project-a6-lemme-shoyu/lemmeShoyu/app/src/main/res/layout/myfridge.xml" value="0.1828125" />
+        <entry key="..\:/Users/Pacy Wu/OneDrive/Desktop/UW Courses/2021 Fall/INFO 448/HW/group-final-project-a6-lemme-shoyu/lemmeShoyu/app/src/main/res/layout/nav_bar.xml" value="0.2210144927536232" />
+        <entry key="..\:/Users/Pacy Wu/OneDrive/Desktop/UW Courses/2021 Fall/INFO 448/HW/group-final-project-a6-lemme-shoyu/lemmeShoyu/app/src/main/res/layout/rounded_red_border.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/Pacy Wu/OneDrive/Desktop/UW Courses/2021 Fall/INFO 448/HW/group-final-project-a6-lemme-shoyu/lemmeShoyu/app/src/main/res/layout/search.xml" value="0.1828125" />
+        <entry key="..\:/Users/Pacy Wu/OneDrive/Desktop/UW Courses/2021 Fall/INFO 448/HW/group-final-project-a6-lemme-shoyu/lemmeShoyu/app/src/main/res/layout/search_results_fragment.xml" value="0.2210144927536232" />
+        <entry key="..\:/Users/Pacy Wu/OneDrive/Desktop/UW Courses/2021 Fall/INFO 448/HW/group-final-project-a6-lemme-shoyu/lemmeShoyu/app/src/main/res/menu/bottom_nav_menu.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/Pacy Wu/OneDrive/Desktop/UW Courses/2021 Fall/INFO 448/HW/group-final-project-a6-lemme-shoyu/lemmeShoyu/app/src/main/res/menu/menu_main.xml" value="0.17916666666666667" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
