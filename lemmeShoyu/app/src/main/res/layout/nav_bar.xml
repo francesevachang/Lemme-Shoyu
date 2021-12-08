@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
@@ -7,36 +8,64 @@
     android:theme="@style/Theme.LemmeShoyu.Button"
     android:layout_alignParentBottom="true">
 
-        <Button
-            android:id="@+id/homeNavButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:text="Home"
-            android:textSize="12sp"
-            />
+<!--        <Button-->
+<!--            android:id="@+id/homeNavButton"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginLeft="4dp"-->
+<!--            android:layout_marginRight="4dp"-->
+<!--            android:text="Home"-->
+<!--            android:textSize="12sp"-->
+<!--            />-->
 
-        <Button
-            android:id="@+id/searchNavButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:text="Search"
-            android:textSize="12sp"
-            />
+<!--        <Button-->
+<!--            android:id="@+id/searchNavButton"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginLeft="4dp"-->
+<!--            android:layout_marginRight="4dp"-->
+<!--            android:text="Search"-->
+<!--            android:textSize="12sp"-->
+<!--            />-->
 
-        <Button
-            android:id="@+id/myFridgeNavButton"
+<!--        <Button-->
+<!--            android:id="@+id/myFridgeNavButton"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginLeft="4dp"-->
+<!--            android:layout_marginRight="4dp"-->
+<!--            android:text="My Fridge"-->
+<!--            android:textSize="12sp"-->
+<!--            />-->
+        <com.google.android.material.tabs.TabLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:text="My Fridge"
-            android:textSize="12sp"
-            />
+            app:tabMode="fixed"
+            android:id="@+id/tab_layout">
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/homeNavButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Home"
+                    />
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/searchNavButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Search"
+                    />
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/myFridgeNavButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My Fridge"
+                    />
+
+        </com.google.android.material.tabs.TabLayout>
 </LinearLayout>

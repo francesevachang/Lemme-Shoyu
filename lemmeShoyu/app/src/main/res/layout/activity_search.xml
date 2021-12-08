@@ -6,24 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".SearchActivity">
 
-
-    <View
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/yellow" />
+        android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/rounded_white_border"
-        android:layout_below="@id/toolbarContainer"
-        >
-
-        <View
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/rounded_white_border"
-            />
+            android:layout_height="?attr/actionBarSize">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:background="@color/yellow" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_border_radius" />
+
+            <SearchView
+                android:id="@+id/simpleSearchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:iconifiedByDefault="false"
+                android:inputType="text"
+                android:queryHint="Search your recipes"/>
+            </RelativeLayout>
+        </RelativeLayout>
 
 
         <!--    Replace TextView To your fragment-->
@@ -32,8 +49,9 @@
             android:layout_height="wrap_content"
             android:text="Search Activity" />
 
-        <include layout="@layout/nav_bar" />
+        <include layout="@layout/range_slider" />
 
-    </RelativeLayout>
 
+    </LinearLayout>
+    <include layout="@layout/nav_bar" />
 </RelativeLayout>

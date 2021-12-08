@@ -9,4 +9,9 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string-array name="initial_range_slider_values">
+        <item>10.0</item>
+        <item>100.0</item>
+    </string-array>
 </resources>

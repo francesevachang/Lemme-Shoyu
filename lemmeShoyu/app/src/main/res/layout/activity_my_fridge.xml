@@ -32,11 +32,9 @@
             android:layout_height="wrap_content"
             android:text="My Fridge Activity" />
 
-        <include layout="@layout/nav_bar" />
-
     </RelativeLayout>
 
-
+    <include layout="@layout/nav_bar" />
 
 
 </RelativeLayout>

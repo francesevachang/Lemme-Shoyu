@@ -16,6 +16,7 @@
         <activity
             android:name=".SearchActivity"
             android:label="Search Activity"
+            android:theme="@style/Theme.LemmeShoyu.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

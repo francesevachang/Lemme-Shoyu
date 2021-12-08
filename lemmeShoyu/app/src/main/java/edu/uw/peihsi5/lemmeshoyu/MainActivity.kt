@@ -1,14 +1,23 @@
 package edu.uw.peihsi5.lemmeshoyu
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.navigation.findNavController
+import com.google.android.material.slider.RangeSlider
+import com.google.android.material.slider.Slider
 import edu.uw.peihsi5.lemmeshoyu.databinding.ActivityMainBinding
+import java.lang.Math.round
+import com.google.android.material.tabs.TabLayout
+
+
+
 
 private const val TAG: String = ".MainActivity"
 
@@ -30,6 +39,10 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         NavBarHandler(this,"Home")
+
+        val tabLayout = findViewById<TabLayout>(R.id.tab_layout)
+        tabLayout.getTabAt(0)!!.select()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
