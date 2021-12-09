@@ -8,18 +8,8 @@
     <fragment
         android:id="@+id/RecipeFoldersFragment"
         android:name="edu.uw.peihsi5.lemmeshoyu.RecipeFoldersFragment"
-        android:label="RecipeFoldersFragment"
+        android:label="My Recipes"
         tools:layout="@layout/fragment_recipe_folders">
-
-        <action
-            android:id="@+id/action_RecipeFoldersFragment_to_RecipeListInFolderFragment"
-            app:destination="@id/RecipeListInFolderFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/RecipeListInFolderFragment"
-        android:name="edu.uw.peihsi5.lemmeshoyu.RecipeListInFolderFragment"
-        android:label="RecipeListInFolderFragment"
-        tools:layout="@layout/fragment_recipe_list_in_folder">
 
-    </fragment>
 </navigation>

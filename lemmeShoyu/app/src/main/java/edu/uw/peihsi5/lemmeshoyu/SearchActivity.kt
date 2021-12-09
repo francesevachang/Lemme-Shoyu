@@ -32,7 +32,7 @@ class SearchActivity : AppCompatActivity() {
         }
 
         // TODO code starts here
-        
+
     }
 
 

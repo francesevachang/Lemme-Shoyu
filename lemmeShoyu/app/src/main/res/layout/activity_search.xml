@@ -30,7 +30,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/rounded_border_radius" />
+                    android:background="@drawable/rounded_border_radius_20_fill_white" />
 
             <SearchView
                 android:id="@+id/simpleSearchView"
