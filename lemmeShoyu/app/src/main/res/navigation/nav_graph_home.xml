@@ -10,6 +10,23 @@
         android:name="edu.uw.peihsi5.lemmeshoyu.RecipeFoldersFragment"
         android:label="My Recipes"
         tools:layout="@layout/fragment_recipe_folders">
+
+        <action
+            android:id="@+id/action_to_RecipeListInFolderFragment"
+            app:destination="@id/RecipeListInFolderFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/RecipeListInFolderFragment"
+        android:name="edu.uw.peihsi5.lemmeshoyu.RecipeListInFolderFragment"
+        android:label="{folder_name}"
+        tools:layout="@layout/fragment_recipe_list_in_folder">
+
+        <argument
+            android:name="folder_name"
+            app:argType="string"
+            />
     </fragment>
 
 </navigation>

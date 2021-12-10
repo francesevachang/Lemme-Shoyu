@@ -1,4 +1,4 @@
-package edu.uw.peihsi5.lemmeshoyu
+package edu.uw.peihsi5.lemmeshoyu.repositories
 
 import androidx.lifecycle.LiveData
 import edu.uw.peihsi5.lemmeshoyu.database.Folder
@@ -7,7 +7,6 @@ import edu.uw.peihsi5.lemmeshoyu.database.FolderDao
 class FolderRepository(private val folderDao: FolderDao) {
 
     val allFolders: LiveData<List<Folder>> = folderDao.getAllFolders()
-
 
     suspend fun insert(folder: Folder) {
         folderDao.insert(folder)

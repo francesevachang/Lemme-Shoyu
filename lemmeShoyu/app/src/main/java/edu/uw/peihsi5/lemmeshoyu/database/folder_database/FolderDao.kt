@@ -9,7 +9,7 @@ import androidx.room.Query
 
 @Dao
 interface FolderDao {
-    @Insert(onConflict = IGNORE)
+    @Insert(onConflict = IGNORE) // TODO throw error and show message
     suspend fun insert(folder: Folder)
 
     @Query("DELETE FROM folderTable")
