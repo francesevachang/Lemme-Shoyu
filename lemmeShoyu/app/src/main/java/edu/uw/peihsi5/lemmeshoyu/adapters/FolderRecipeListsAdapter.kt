@@ -56,10 +56,10 @@ class FolderDiffCallback<T>: DiffUtil.ItemCallback<T>() {
 }
 
 interface BindDataToViewHolderInterface<T> {
-    fun bindDataToViewHolder(folder: T, holder: FolderRecipeListsAdapter<T>.ViewHolder)
+    fun bindDataToViewHolder(item: T, holder: FolderRecipeListsAdapter<T>.ViewHolder)
 }
 
 interface ViewOnClickListenerInterface<T> {
-    fun viewOnClickListener(folder: T)
+    fun viewOnClickListener(item: T)
 }
 
