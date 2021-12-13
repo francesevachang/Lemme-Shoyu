@@ -33,4 +33,10 @@ class FolderViewModel(application: Application): AndroidViewModel(application) {
             repository?.deleteAllFolders()
         }
     }
+
+    fun delete(folder: Folder) {
+        viewModelScope.launch (Dispatchers.IO) {
+            repository?.delete(folder)
+        }
+    }
 }

@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#F8AC25</color>
     <color name="darker_yellow">#F2A823</color>
+    <color name="platinum">#E5E4E2</color>
+    <color name="red">#BC0404</color>
 </resources>
