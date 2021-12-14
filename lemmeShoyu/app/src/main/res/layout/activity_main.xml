@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/root_activity_main"
     tools:context=".MainActivity">
 
     <View
@@ -35,13 +36,6 @@
         android:background="@drawable/rounded_white_border"
         android:layout_below="@id/toolbarContainer"
         >
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/rounded_white_border"
-           />
-
 
         <FrameLayout
             android:layout_height="match_parent"
