@@ -1,5 +1,6 @@
 package edu.uw.peihsi5.lemmeshoyu.database
 
+import android.database.sqlite.SQLiteException
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
@@ -9,7 +10,8 @@ import androidx.room.Query
 
 @Dao
 interface FolderDao {
-    @Insert(onConflict = IGNORE) // TODO throw error and show message
+    @Insert(onConflict = ABORT)
+    @Throws(SQLiteException::class)
     suspend fun insert(folder: Folder)
 
     @Query("DELETE FROM folderTable")

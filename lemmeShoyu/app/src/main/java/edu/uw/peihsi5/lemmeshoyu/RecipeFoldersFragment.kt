@@ -1,7 +1,7 @@
 package edu.uw.peihsi5.lemmeshoyu
 
-import android.app.Dialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.*
 import com.bumptech.glide.Glide
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import edu.uw.peihsi5.lemmeshoyu.adapters.BindDataToViewHolderInterface
 import edu.uw.peihsi5.lemmeshoyu.adapters.DeleteFromDatabaseInterface
@@ -51,8 +50,12 @@ class RecipeFoldersFragment : Fragment(), ViewOnClickListenerInterface<Folder>,
         }
         viewModel.allFolders?.observe(viewLifecycleOwner, folderObserver)
 
-        // TODO NOTE:
-//         viewModel.insertFolder(Folder("testFolder2", "https://spoonacular.com/recipeImages/716429-556x370.jpg"))
+//            viewModel.insertFolder(
+//                Folder(
+//                    "testFolder2",
+//                    "https://spoonacular.com/recipeImages/716429-556x370.jpg"
+//                )
+//            ) { this.insertExceptionHandler() }
 
         val recycler: RecyclerView = rootView.findViewById(R.id.folders_recyclerview)
         recycler.adapter = folderRecipeListsAdapter
@@ -90,6 +93,8 @@ class RecipeFoldersFragment : Fragment(), ViewOnClickListenerInterface<Folder>,
 
     override fun deleteFromDatabase(item: Folder) {
         viewModel.delete(item)
+
+        // TODO delete from recipe database as well
     }
 
 

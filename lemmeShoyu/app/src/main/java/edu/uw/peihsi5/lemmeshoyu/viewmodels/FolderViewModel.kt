@@ -1,6 +1,9 @@
 package edu.uw.peihsi5.lemmeshoyu.viewmodels
 
 import android.app.Application
+import android.database.sqlite.SQLiteException
+import android.util.Log
+import androidx.constraintlayout.motion.utils.ViewState
 import androidx.lifecycle.*
 import edu.uw.peihsi5.lemmeshoyu.repositories.FolderRepository
 import edu.uw.peihsi5.lemmeshoyu.database.Folder
@@ -22,10 +25,16 @@ class FolderViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
-    fun insertFolder(folder: Folder) {
+    fun insertFolder(folder: Folder, exceptionHandler: () -> Unit) {
         viewModelScope.launch (Dispatchers.IO) {
-            repository?.insert(folder)
+            try{
+                repository?.insert(folder)
+            } catch(e: SQLiteException) {
+                // handle the exception by the user
+                exceptionHandler()
+            }
         }
+
     }
 
     fun deleteAllFolders() {
@@ -39,4 +48,6 @@ class FolderViewModel(application: Application): AndroidViewModel(application) {
             repository?.delete(folder)
         }
     }
+
+
 }
