@@ -6,7 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "myFridgeTable")
 data class Ingredient (
-    @PrimaryKey val itemName: String, // no duplicates
+    @PrimaryKey(autoGenerate = true) val id: Int = 0, // no duplicates
+    @ColumnInfo(name = "itemName") val itemName: String,
     @ColumnInfo(name = "expireYear") val expireYear: Int,
     @ColumnInfo(name = "expireMonth") val expireMonth: Int,
     @ColumnInfo(name = "expireDay") val expireDay: Int

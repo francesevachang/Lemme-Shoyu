@@ -4,37 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fridge_bg"
     tools:context=".MyFridgeActivity">
 
-
-    <View
+    <FrameLayout
+        android:id="@+id/fridge_fragment_container"
+        android:layout_above="@id/navBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/yellow" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/rounded_white_border"
-        android:layout_below="@id/toolbarContainer"
         >
 
-        <View
+        <fragment
+            android:id="@+id/nav_host_fragment_fridge"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/rounded_white_border"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph_fridge"
             />
 
-
-        <!--    Replace TextView To your fragment-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="My Fridge Activity" />
-
-    </RelativeLayout>
+    </FrameLayout>
 
     <include layout="@layout/nav_bar" />
-
 
 </RelativeLayout>

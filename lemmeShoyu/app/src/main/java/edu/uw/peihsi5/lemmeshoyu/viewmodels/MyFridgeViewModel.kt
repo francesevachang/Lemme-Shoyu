@@ -26,7 +26,7 @@ class MyFridgeViewModel(application: Application): AndroidViewModel(application)
 
     fun insert(ingredient: Ingredient, exceptionHandler: () -> Unit) {
         viewModelScope.launch (Dispatchers.IO) {
-            try{
+            try {
                 repository?.insert(ingredient)
             } catch(e: SQLiteException) {
                 // handle the exception by the user
