@@ -1,3 +1,8 @@
+/**
+ * Frances Chang: I wrote the MyFridgeDatabase to build the database in companion object,
+ * so there will only be one my fridge database throughout the app.
+ **/
+
 package edu.uw.peihsi5.lemmeshoyu.database.my_fridge_database
 
 import android.content.Context

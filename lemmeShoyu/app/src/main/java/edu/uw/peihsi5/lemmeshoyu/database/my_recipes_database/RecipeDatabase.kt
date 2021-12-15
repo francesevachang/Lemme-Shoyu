@@ -1,3 +1,8 @@
+/**
+ * Pacy Wu: I wrote the RecipeDatabase to build the database in companion object,
+ * so there will only be one recipe database throughout the app.
+ **/
+
 package edu.uw.peihsi5.lemmeshoyu.database.my_recipes_database
 
 import android.content.Context

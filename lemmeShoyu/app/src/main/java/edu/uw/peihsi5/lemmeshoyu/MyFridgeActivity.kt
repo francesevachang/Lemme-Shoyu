@@ -15,11 +15,15 @@ class MyFridgeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_fridge)
+
+        // set the action bar elevation to zero
         supportActionBar?.elevation = 0F
+
+        // add navigation bar listener
         NavBarHandler(this,"My Fridge")
+
+        // the navigation bar light on the selected activity
         val tabLayout = findViewById<TabLayout>(R.id.tab_layout)
         tabLayout.getTabAt(2)!!.select()
-
-        // TODO code starts here
     }
 }
