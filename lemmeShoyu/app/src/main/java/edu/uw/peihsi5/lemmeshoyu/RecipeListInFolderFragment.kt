@@ -18,6 +18,10 @@ import edu.uw.peihsi5.lemmeshoyu.database.Recipe
 import edu.uw.peihsi5.lemmeshoyu.databinding.FragmentRecipeListInFolderBinding
 import edu.uw.peihsi5.lemmeshoyu.viewmodels.RecipeViewModel
 import androidx.lifecycle.ViewModel
+import edu.uw.peihsi5.lemmeshoyu.adapters.BindDataToViewHolderInterface
+import edu.uw.peihsi5.lemmeshoyu.adapters.DeleteFromDatabaseInterface
+import edu.uw.peihsi5.lemmeshoyu.adapters.FolderRecipeListsAdapter
+import edu.uw.peihsi5.lemmeshoyu.adapters.ViewOnClickListenerInterface
 
 private const val TAG = ".RecipeListInFolderFragment"
 
@@ -25,12 +29,13 @@ private const val TAG = ".RecipeListInFolderFragment"
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class RecipeListInFolderFragment : Fragment(), ViewOnClickListenerInterface<Recipe>,
-    BindDataToViewHolderInterface<Recipe> {
+    BindDataToViewHolderInterface<Recipe>, DeleteFromDatabaseInterface<Recipe> {
 
     private var _binding:FragmentRecipeListInFolderBinding? = null
     private val binding get() = _binding!!
     private lateinit var folderName: String
     private lateinit var recipesRecipeListsAdapter: FolderRecipeListsAdapter<Recipe>
+    private lateinit var viewModel: RecipeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,10 +51,15 @@ class RecipeListInFolderFragment : Fragment(), ViewOnClickListenerInterface<Reci
 
         _binding = FragmentRecipeListInFolderBinding.inflate(inflater, container, false)
         val rootView = binding.root
-        recipesRecipeListsAdapter = FolderRecipeListsAdapter(requireContext(), this, this)
+        recipesRecipeListsAdapter = FolderRecipeListsAdapter(
+            requireContext(),
+            this,
+            this,
+            this)
 
 
         val viewModel: RecipeViewModel by viewModels { RecipeViewModelFactory(requireActivity().application, folderName) }
+        this.viewModel = viewModel
 
         val recipesObserver = Observer<List<Recipe>> {
             recipesRecipeListsAdapter.submitList(it)
@@ -73,28 +83,37 @@ class RecipeListInFolderFragment : Fragment(), ViewOnClickListenerInterface<Reci
         _binding = null
     }
 
-    override fun viewOnClickListener(folder: Recipe) {
+    override fun viewOnClickListener(item: Recipe) {
+        // TODO
         Log.v(TAG, "navigate to recipe detail fragment")
     }
 
-    override fun bindDataToViewHolder(recipe: Recipe, holder: FolderRecipeListsAdapter<Recipe>.ViewHolder) {
+    override fun bindDataToViewHolder(item: Recipe, holder: FolderRecipeListsAdapter<Recipe>.ViewHolder) {
         // load recipe image
         Glide.with(this)
-            .load(recipe.recipeImageUrl)
+            .load(item.recipeImageUrl)
             .error(R.drawable.error_image)
             .into(holder.itemImage)
 
         // load recipe name
-        holder.itemTextView.text = recipe.recipeName
+        holder.itemTextView.text = item.recipeName
+
+        holder.item = item
+
     }
 
-    inner class RecipeViewModelFactory(application: Application, param: String) :
+    inner class RecipeViewModelFactory (application: Application, param: String) :
         ViewModelProvider.Factory {
         private val mApplication: Application = application
         private val mParam: String = param
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return RecipeViewModel(mApplication, mParam) as T
         }
+
+    }
+
+    override fun deleteFromDatabase(item: Recipe) {
+        viewModel.deleteRecipe(item)
     }
 }
 

@@ -1,6 +1,8 @@
 package edu.uw.peihsi5.lemmeshoyu
 
+import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +12,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.*
 import com.bumptech.glide.Glide
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import edu.uw.peihsi5.lemmeshoyu.adapters.BindDataToViewHolderInterface
+import edu.uw.peihsi5.lemmeshoyu.adapters.DeleteFromDatabaseInterface
+import edu.uw.peihsi5.lemmeshoyu.adapters.FolderRecipeListsAdapter
+import edu.uw.peihsi5.lemmeshoyu.adapters.ViewOnClickListenerInterface
 import edu.uw.peihsi5.lemmeshoyu.database.Folder
+import edu.uw.peihsi5.lemmeshoyu.dialogs.AddFolderDialogFragment
 import edu.uw.peihsi5.lemmeshoyu.viewmodels.FolderViewModel
 
 private const val TAG = ".RecipeFoldersFragment"
@@ -19,17 +27,24 @@ private const val TAG = ".RecipeFoldersFragment"
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class RecipeFoldersFragment : Fragment(), ViewOnClickListenerInterface<Folder>,
-    BindDataToViewHolderInterface<Folder> {
+    BindDataToViewHolderInterface<Folder>, DeleteFromDatabaseInterface<Folder> {
 
     private lateinit var folderRecipeListsAdapter: FolderRecipeListsAdapter<Folder>
+    private lateinit var viewModel: FolderViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
+        val orientation = resources.configuration.orientation
+
         val rootView = inflater.inflate(R.layout.fragment_recipe_folders, container, false)
 
-        folderRecipeListsAdapter = FolderRecipeListsAdapter(requireContext(), this, this)
+        folderRecipeListsAdapter = FolderRecipeListsAdapter(
+            requireContext(),
+            this,
+            this,
+            this)
 
-        val viewModel = ViewModelProvider(
+        viewModel = ViewModelProvider(
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))
             .get(FolderViewModel::class.java)
@@ -39,30 +54,58 @@ class RecipeFoldersFragment : Fragment(), ViewOnClickListenerInterface<Folder>,
         }
         viewModel.allFolders?.observe(viewLifecycleOwner, folderObserver)
 
-        // TODO NOTE:
-        // viewModel.insertFolder(Folder("testFolder2", "https://spoonacular.com/recipeImages/716429-556x370.jpg"))
+//            viewModel.insertFolder(
+//                Folder(
+//                    "testFolder2",
+//                    "https://spoonacular.com/recipeImages/716429-556x370.jpg"
+//                )
+//            ) { this.insertExceptionHandler() }
 
         val recycler: RecyclerView = rootView.findViewById(R.id.folders_recyclerview)
         recycler.adapter = folderRecipeListsAdapter
-        recycler.layoutManager = GridLayoutManager(activity, 2)
+
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // In landscape
+            recycler.layoutManager = GridLayoutManager(activity, 4)
+        } else {
+            // In portrait
+            recycler.layoutManager = GridLayoutManager(activity, 2)
+        }
+
+        val addFolderButton = rootView.findViewById<FloatingActionButton>(R.id.floating_add_folder_button)
+        addFolderButton.setOnClickListener {
+            val dialog = AddFolderDialogFragment()
+            dialog.show(requireActivity().supportFragmentManager, TAG)
+        }
 
         return rootView
-
     }
 
-    override fun viewOnClickListener(folder: Folder) {
-        val action = RecipeFoldersFragmentDirections.actionToRecipeListInFolderFragment(folder.folderName)
+    override fun viewOnClickListener(item: Folder) {
+        val action = RecipeFoldersFragmentDirections.actionToRecipeListInFolderFragment(item.folderName)
         findNavController().navigate(action)
     }
 
-    override fun bindDataToViewHolder(folder: Folder, holder: FolderRecipeListsAdapter<Folder>.ViewHolder) {
+    override fun bindDataToViewHolder(item: Folder, holder: FolderRecipeListsAdapter<Folder>.ViewHolder) {
         // load folder image
-        Glide.with(this)
-            .load(folder.folderImageUrl)
-            .error(R.drawable.error_image)
-            .into(holder.itemImage)
+        if (item.folderImageUrl != null) {
+            Glide.with(this)
+                .load(item.folderImageUrl)
+                .error(R.drawable.error_image)
+                .into(holder.itemImage)
+        }
 
         // load folder name
-        holder.itemTextView.text = folder.folderName
+        holder.itemTextView.text = item.folderName
+
+        holder.item = item
     }
+
+    override fun deleteFromDatabase(item: Folder) {
+        viewModel.delete(item)
+
+        // TODO delete from recipe database as well
+    }
+
+
 }

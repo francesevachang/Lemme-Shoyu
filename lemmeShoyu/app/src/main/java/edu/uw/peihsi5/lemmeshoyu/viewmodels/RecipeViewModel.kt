@@ -15,7 +15,7 @@ class RecipeViewModel(application: Application, val folderName: String): Android
     var repository: RecipeRepository? = null
 
     init {
-        var recipeDao = RecipeDatabase.getDatabase(application)?.getRecipeDao()
+        val recipeDao = RecipeDatabase.getDatabase(application)?.getRecipeDao()
         if (recipeDao != null) {
             repository = RecipeRepository(recipeDao)
             allRecipes = repository!!.getAllRecipesInFolder(folderName)

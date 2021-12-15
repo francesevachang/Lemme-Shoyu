@@ -1,4 +1,4 @@
-package edu.uw.peihsi5.lemmeshoyu.database
+package edu.uw.peihsi5.lemmeshoyu.database.my_fridge_database
 
 import android.database.sqlite.SQLiteException
 import androidx.lifecycle.LiveData
@@ -9,17 +9,15 @@ import androidx.room.OnConflictStrategy.*
 import androidx.room.Query
 
 @Dao
-interface FolderDao {
+interface MyFridgeDao {
     @Insert(onConflict = ABORT)
     @Throws(SQLiteException::class)
-    suspend fun insert(folder: Folder)
-
-    @Query("DELETE FROM folderTable")
-    suspend fun deleteAllFolders()
+    suspend fun insert(ingredient: Ingredient)
 
     @Delete
-    suspend fun delete(folder: Folder)
+    suspend fun delete(ingredient: Ingredient)
 
-    @Query("SELECT * FROM folderTable")
-    fun getAllFolders(): LiveData<List<Folder>>
+    @Query("SELECT * FROM myFridgeTable")
+    fun getAllIngredients(): LiveData<List<Ingredient>>
+
 }
