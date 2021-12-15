@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fridge_list_item"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:orientation="horizontal"
+    android:minHeight="?android:attr/listPreferredItemHeight">
+
+    <ImageButton
+        android:id="@+id/delete_fridge_item_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/ic_delete_fridge_item"
+        />
+
+    <TextView
+        android:id="@+id/fridge_list_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="70dp"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:text="@string/test_fridge_list_item_1"
+        />
+
+    <TextView
+        android:id="@+id/fridge_list_item_exp_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/fridge_list_item_name"
+        android:layout_marginLeft="90dp"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:text="@string/test_fridge_list_item_1_exp"
+        />
+
+</RelativeLayout>

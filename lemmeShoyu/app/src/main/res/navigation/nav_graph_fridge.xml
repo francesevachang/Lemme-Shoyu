@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_fridge"
+    app:startDestination="@id/FridgeHomeFragment">
+
+    <fragment
+        android:id="@+id/FridgeHomeFragment"
+        android:name="edu.uw.peihsi5.lemmeshoyu.FridgeHomeFragment"
+        android:label="fridge_home"
+        tools:layout="@layout/fragment_fridge_home"
+        >
+
+        <action
+            android:id="@+id/action_to_FridgeAddItemFragment"
+            app:destination="@id/FridgeAddItemFragment"
+            />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/FridgeAddItemFragment"
+        android:name="edu.uw.peihsi5.lemmeshoyu.FridgeAddItemFragment"
+        android:label="fridge_add_item"
+        tools:layout="@layout/fragment_fridge_add_item"
+        >
+
+        <action
+            android:id="@+id/action_to_FridgeHomeFragment"
+            app:destination="@id/FridgeHomeFragment"
+            />
+
+    </fragment>
+
+</navigation>

@@ -14,4 +14,12 @@
         <item>10.0</item>
         <item>100.0</item>
     </string-array>
+
+    <!--    strings used for My Fridge activity-->
+    <string name="test_fridge_list_item_1">avocado</string>
+    <string name="test_fridge_list_item_1_exp">12/7/2020</string>
+    <string name="test_fridge_list_item_2">banana</string>
+    <string name="test_fridge_list_item_2_exp">12/20/2020</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
