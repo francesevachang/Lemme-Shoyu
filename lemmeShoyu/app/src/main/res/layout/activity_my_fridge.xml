@@ -4,27 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fridge_bg"
     tools:context=".MyFridgeActivity">
-
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/yellow" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/rounded_white_border"
-        android:layout_below="@id/toolbarContainer"
         >
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/rounded_white_border"
-            />
-
 
         <!--    Replace TextView To your fragment-->
         <TextView
@@ -32,9 +18,10 @@
             android:layout_height="wrap_content"
             android:text="My Fridge Activity" />
 
+
+
     </RelativeLayout>
 
     <include layout="@layout/nav_bar" />
-
 
 </RelativeLayout>
