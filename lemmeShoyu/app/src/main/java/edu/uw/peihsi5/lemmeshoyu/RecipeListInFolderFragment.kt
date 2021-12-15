@@ -83,31 +83,33 @@ class RecipeListInFolderFragment : Fragment(), ViewOnClickListenerInterface<Reci
         _binding = null
     }
 
-    override fun viewOnClickListener(folder: Recipe) {
+    override fun viewOnClickListener(item: Recipe) {
+        // TODO
         Log.v(TAG, "navigate to recipe detail fragment")
     }
 
-    override fun bindDataToViewHolder(recipe: Recipe, holder: FolderRecipeListsAdapter<Recipe>.ViewHolder) {
+    override fun bindDataToViewHolder(item: Recipe, holder: FolderRecipeListsAdapter<Recipe>.ViewHolder) {
         // load recipe image
         Glide.with(this)
-            .load(recipe.recipeImageUrl)
+            .load(item.recipeImageUrl)
             .error(R.drawable.error_image)
             .into(holder.itemImage)
 
         // load recipe name
-        holder.itemTextView.text = recipe.recipeName
+        holder.itemTextView.text = item.recipeName
 
-        holder.item = recipe
+        holder.item = item
 
     }
 
-    inner class RecipeViewModelFactory(application: Application, param: String) :
+    inner class RecipeViewModelFactory (application: Application, param: String) :
         ViewModelProvider.Factory {
         private val mApplication: Application = application
         private val mParam: String = param
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return RecipeViewModel(mApplication, mParam) as T
         }
+
     }
 
     override fun deleteFromDatabase(item: Recipe) {
