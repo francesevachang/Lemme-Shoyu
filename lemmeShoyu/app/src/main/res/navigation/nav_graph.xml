@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/SearchRecipeFragment">
+    <fragment
+        android:id="@+id/SearchRecipeFragment"
+        android:name="edu.uw.peihsi5.lemmeshoyu.SearchRecipeFragment"
+        android:label="Recipe List"
+        tools:layout="@layout/fragment_search_recipe">
+        <action
+            android:id="@+id/action_to_RecipeDetailFragment"
+            app:destination="@id/RecipeDetailFragment"
+            />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/RecipeDetailFragment"
+        android:name="edu.uw.peihsi5.lemmeshoyu.RecipeDetailFragment"
+        android:label="Recipe Detail"
+        tools:layout="@layout/fragment_recipe_detail">
+        <argument
+            android:name="recipe"
+            app:argType="edu.uw.peihsi5.lemmeshoyu.network.Recipe"
+            />
+
+    </fragment>
+
+    <action
+        android:id="@+id/action_global_to_SearchRecipeFragment"
+        app:destination="@id/SearchRecipeFragment"
+        />
+
+</navigation>
