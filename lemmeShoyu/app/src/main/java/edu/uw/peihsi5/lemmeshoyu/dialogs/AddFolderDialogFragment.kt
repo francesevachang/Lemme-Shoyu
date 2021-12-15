@@ -1,6 +1,6 @@
-package edu.uw.peihsi5.lemmeshoyu
+package edu.uw.peihsi5.lemmeshoyu.dialogs
 
-import android.graphics.Color
+import edu.uw.peihsi5.lemmeshoyu.R
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import edu.uw.peihsi5.lemmeshoyu.database.Folder

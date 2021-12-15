@@ -10,7 +10,7 @@
 
 
     <ImageButton
-        android:id="@+id/add_folder_dialog_close_button"
+        android:id="@+id/choose_folder_dialog_close_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
-        android:layout_below="@id/add_folder_dialog_close_button"
+        android:layout_below="@id/choose_folder_dialog_close_button"
         android:id="@+id/add_folder_dialog_content">
 
         <LinearLayout
@@ -38,39 +38,32 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="New Folder"
+                android:text="Add To My Recipes"
                 android:textSize="20dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="15dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textSize="14dp"
-                android:textColor="@color/black"
-                android:text="Enter the folder name below"
-                android:textStyle="bold"
-                android:layout_marginBottom="15dp"
-                />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textField"
+                android:id="@+id/choose_folder_dropdown"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="240dp"
                 android:layout_height="wrap_content"
-                android:hint="New Folder Name"
-                android:layout_marginBottom="15dp">
+                android:layout_marginBottom="15dp"
+                android:hint="Choose a folder">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_folder_dialog_input_text"
+                <AutoCompleteTextView
+                    android:id="@+id/choose_folder_dropdown_autocomplete"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="none"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/add_folder_dialog_done_button"
+                android:id="@+id/choose_folder_dialog_done_button"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
                 android:text="Done"
@@ -78,10 +71,10 @@
                 />
 
             <TextView
-                android:id="@+id/add_folder_dialog_error_msg"
+                android:id="@+id/choose_folder_dialog_error_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Please enter new folder name"
+                android:text="Select a folder to add to"
                 android:textColor="@color/red"
                 android:textSize="12dp"
                 android:layout_marginTop="15dp"
