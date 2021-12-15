@@ -7,13 +7,16 @@
     android:orientation="vertical"
     tools:context=".RecipeFoldersFragment">
 
-    <TextView
-        android:id="@+id/textview_first"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_add_folder_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_first_fragment" />
+        android:layout_gravity="bottom|right"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_plus"
+        app:backgroundTint="@color/yellow"
+        app:tint="@color/white" />
 
-
-
+    <include layout="@layout/folders_recyclerview" />
 
 </LinearLayout>

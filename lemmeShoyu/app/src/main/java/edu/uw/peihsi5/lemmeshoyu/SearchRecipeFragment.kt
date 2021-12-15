@@ -24,7 +24,7 @@ import com.bumptech.glide.Glide
 import edu.uw.peihsi5.lemmeshoyu.network.Recipe
 import edu.uw.peihsi5.lemmeshoyu.network.RecipeApi
 import edu.uw.peihsi5.lemmeshoyu.network.RecipeSearchResponse
-import edu.uw.peihsi5.lemmeshoyu.viewmodels.RecipeViewModel
+import edu.uw.peihsi5.lemmeshoyu.viewmodels.SearchRecipeViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -35,7 +35,7 @@ class SearchRecipeFragment : Fragment() {
     private val API_KEY = "a819550bd27e4c86943cebc170e07408"
 //    private lateinit var adapter: RecipeAdapter
     private lateinit var searchAdapter: SearchListAdapter
-    private lateinit var viewModel: RecipeViewModel
+    private lateinit var viewModel: SearchRecipeViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +51,7 @@ class SearchRecipeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        viewModel = ViewModelProvider(this).get(RecipeViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(SearchRecipeViewModel::class.java)
         val recipeObserver = Observer<List<Recipe>>{
             Log.v(TAG, "Updating: $it")
             searchAdapter.submitList(it)
