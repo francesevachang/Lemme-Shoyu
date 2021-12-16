@@ -39,7 +39,7 @@ class ChooseFolderDialogFragment(private val recipe: edu.uw.peihsi5.lemmeshoyu.n
         // get all folder names
         var _folderNames: MutableList<String> = mutableListOf()
         val folderNames = _folderNames
-        val viewModel = ViewModelProvider(
+        val folderViewModel = ViewModelProvider(
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))
             .get(FolderViewModel::class.java)
@@ -50,7 +50,7 @@ class ChooseFolderDialogFragment(private val recipe: edu.uw.peihsi5.lemmeshoyu.n
                 _folderNames.add(folder.folderName)
             }
         }
-        viewModel.allFolders?.observe(viewLifecycleOwner, folderObserver)
+        folderViewModel.allFolders?.observe(viewLifecycleOwner, folderObserver)
 
         // put all folders into the dropdown list
         val adapter = ArrayAdapter(requireContext(), R.layout.choose_folder_list_item, folderNames)
@@ -75,6 +75,10 @@ class ChooseFolderDialogFragment(private val recipe: edu.uw.peihsi5.lemmeshoyu.n
                 val recipeViewModel: RecipeViewModel by viewModels {
                     RecipeViewModelFactory(requireActivity().application, selectedFolder) }
                 recipeViewModel.insertRecipe(Recipe(this.recipe.id, this.recipe.title, this.recipe.imagePath, selectedFolder))
+
+                // change folder image
+                folderViewModel.updateFolderImageUrl(selectedFolder, this.recipe.imagePath)
+
                 this.dismiss()
             }
         }
