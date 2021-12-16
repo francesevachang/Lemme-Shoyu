@@ -111,7 +111,7 @@ data class Amount(
 
 data class Ingredients(
     @Json(name = "ingredients")
-    val ingredients: List<Amount>?
+    val ingredients: List<List<Amount>>?
 )
 
 
