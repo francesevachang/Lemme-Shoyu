@@ -110,11 +110,11 @@ class RecipeDetailFragment : Fragment() {
                     val listAmount = response.body()?.ingredients
                     val textView = rootView.findViewById<TextView>(R.id.ingredient_list)
                     if (listAmount != null) {
-                        for (i in listAmount[0].indices) {
+                        for (i in listAmount.indices) {
                             if (i == 0) {
-                                textView.text = listAmount[0][i].name
+                                textView.text = listAmount[i].name
                             } else {
-                                textView.append("\n\n" + listAmount[0][i].name)
+                                textView.append("\n\n" + listAmount[i].name)
                             }
                         }
                     }
