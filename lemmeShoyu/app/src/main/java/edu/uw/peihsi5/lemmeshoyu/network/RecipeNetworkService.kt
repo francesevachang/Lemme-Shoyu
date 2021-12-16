@@ -33,7 +33,7 @@ interface RecipeApiService{
     fun getRecipeInfo(@Path("id")recipeID:Int, @Query("apiKey")apiKey: String):Call<RecipeSearchResponse>
 
     @GET("{id}/analyzedInstructions")
-    fun getStep(@Path("id")recipeID:Int, @Query("apiKey")apiKey: String):Call<List<Step>>
+    fun getStep(@Path("id")recipeID:Int, @Query("apiKey")apiKey: String):Call<StepsResponse>
 }
 //initialize Moshi
 private val moshi = Moshi.Builder()
@@ -78,5 +78,9 @@ data class Step(
 ): Parcelable
 
 
+data class StepsResponse(
 
+    @Json(name = "steps")
+    val steps: List<Step>
+)
 

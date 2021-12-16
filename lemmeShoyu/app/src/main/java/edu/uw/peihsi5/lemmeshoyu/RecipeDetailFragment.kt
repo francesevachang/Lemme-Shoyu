@@ -23,6 +23,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import android.app.Activity
 import android.widget.ArrayAdapter
+import edu.uw.peihsi5.lemmeshoyu.network.StepsResponse
 
 
 class RecipeDetailFragment : Fragment() {
@@ -58,21 +59,21 @@ class RecipeDetailFragment : Fragment() {
         }
 
         RecipeApi.retrofitService.getStep(recipe!!.id, API_KEY)
-            .enqueue(object : Callback<List<Step>> {
+            .enqueue(object : Callback<StepsResponse> {
                 override fun onResponse(
-                    call: Call<List<Step>>,
-                    response: Response<List<Step>>
+                    call: Call<StepsResponse>,
+                    response: Response<StepsResponse>
                 ) {
                     val body = response.body()
                     Log.v(TAG, "$body")
-                    adapter = StepsAdapter(response.body()!!)
+                    adapter = StepsAdapter(response.body()!!.steps)
                     val recycler = rootView.findViewById<RecyclerView>(R.id.step_recycler_list)
                     recycler.layoutManager = LinearLayoutManager(activity)
                     recycler.adapter = adapter
 
                 }
 
-                override fun onFailure(call: Call<List<Step>>, t: Throwable) {
+                override fun onFailure(call: Call<StepsResponse>, t: Throwable) {
                     Log.e(TAG, "Failure: ${t.message}")
 
                 }
