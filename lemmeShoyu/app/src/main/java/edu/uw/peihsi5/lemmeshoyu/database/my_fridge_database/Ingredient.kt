@@ -3,7 +3,6 @@
  * it's name and it's expired date.
  **/
 
-
 package edu.uw.peihsi5.lemmeshoyu.database.my_fridge_database
 
 import androidx.room.ColumnInfo
@@ -19,4 +18,3 @@ data class Ingredient (
     @ColumnInfo(name = "expireDay") val expireDay: Int,
     @ColumnInfo(name = "ingredientImage", typeAffinity = ColumnInfo.BLOB) val ingredientImage: ByteArray?
 )
-
