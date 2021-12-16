@@ -22,4 +22,6 @@
     <string name="test_fridge_list_item_2_exp">12/20/2020</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="steps">Steps</string>
 </resources>

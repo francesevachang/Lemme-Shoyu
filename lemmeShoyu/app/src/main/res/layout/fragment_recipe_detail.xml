@@ -17,12 +17,14 @@
             android:layout_height="200dp"
             android:contentDescription="Recipe Photo"
             />
+
         <TextView
             android:id="@+id/recipe_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/recipe_photo"
             android:layout_centerHorizontal="true"
+            android:layout_margin="20dp"
             android:textSize="24sp"
             android:textStyle="bold"
             android:text="Recipe Title"
@@ -32,16 +34,30 @@
             android:id="@+id/add_recipe_to_folder_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/recipe_title"
+            android:layout_below="@id/recipe_photo"
             android:layout_alignParentEnd="true"
             app:fabSize="mini"
             app:srcCompat="@drawable/ic_plus"
             app:backgroundTint="@color/yellow"
             app:tint="@color/white" />
 
-
+        <TextView
+            android:id="@+id/steps_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/recipe_title"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="10dp"
+            android:textSize="18sp"
+            android:background="@drawable/rounded_corner"
+            android:text="@string/steps"
+            />
 
 
     </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id = "@+id/step_recycler_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
