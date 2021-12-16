@@ -55,9 +55,10 @@ class FridgeHomeFragment : Fragment() {
 
         val resultsObserver = Observer<List<Ingredient>> {
             adapter.submitList(it)
+            Log.v(TAG, it.toString())
         }
         viewModel.allIngredients?.observe(viewLifecycleOwner, resultsObserver)
-        viewModel.insert(Ingredient(itemName = "2 carrots", expireYear = 2021, expireMonth = 12, expireDay = 30)) { Log.v(TAG, "troubles") }
+//        viewModel.insert(Ingredient(itemName = "2 carrots", expireYear = 2021, expireMonth = 12, expireDay = 30)) { Log.v(TAG, "troubles") }
 
 
         val recycler = rootView.findViewById<RecyclerView>(R.id.fridge_list)

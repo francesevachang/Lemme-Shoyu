@@ -31,6 +31,7 @@ class FridgeAddItemFragment(): DialogFragment() {
             this.imageResultReceiver(1, result.resultCode, data)
         }
     }
+    private lateinit var imageByteArray: ByteArray
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -47,8 +48,8 @@ class FridgeAddItemFragment(): DialogFragment() {
 
         val doneButton = rootView.findViewById<Button>(R.id.fridge_add_item_dialog_done_btn)
         doneButton.setOnClickListener {
-            val itemName = rootView.findViewById<TextInputEditText>(R.id.fridge_add_item_dialog_text1).text.toString().trim()
-            val expDate = rootView.findViewById<TextInputEditText>(R.id.fridge_add_item_dialog_text2).text.toString().trim()
+            val itemName = rootView.findViewById<TextInputEditText>(R.id.fridge_add_item_dialog_name_text).text.toString().trim()
+            val expDate = rootView.findViewById<TextInputEditText>(R.id.fridge_add_item_dialog_date_text).text.toString().trim()
             if (itemName.isNotEmpty() && expDate.isNotEmpty()) { // TODO: error handling of date format
                 val viewModel = ViewModelProvider(
                     this,
@@ -60,7 +61,9 @@ class FridgeAddItemFragment(): DialogFragment() {
                         itemName = itemName,
                         expireMonth = expDate.substring(0, 2).toInt(),
                         expireDay = expDate.substring(3, 5).toInt(),
-                        expireYear = expDate.substring(6).toInt())
+                        expireYear = expDate.substring(6).toInt(),
+                        ingredientImage = imageByteArray
+                    )
                 ) {
 //                    this.insertExceptionHandler()
                 }
@@ -94,7 +97,44 @@ class FridgeAddItemFragment(): DialogFragment() {
             ingredientPhoto.setImageBitmap(imageBitmap)
             ingredientPhoto.visibility = View.VISIBLE
 
+
+            imageByteArray = stream.toByteArray()
+
             rootView.findViewById<ImageButton>(R.id.fridge_add_ingredient_take_pic_button).visibility = View.GONE
         }
     }
+
+//    inner class ImageBitmapString {
+//        @TypeConverter
+//        fun BitMapToString(bitmap :Bitmap): String? {
+//            val baos: ByteArrayOutputStream = ByteArrayOutputStream();
+//            bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
+//            val b: ByteArray =baos.toByteArray();
+//            val temp: String = Base64.encodeToString(b, Base64.DEFAULT);
+//            if(temp == null)
+//            {
+//                return null;
+//            }
+//            else
+//                return temp;
+//        }
+//
+//        @TypeConverter
+//        fun StringToBitMap(encodedString: String ): Bitmap? {
+//            try {
+//                var encodeByte: ByteArray = Base64.decode(encodedString,Base64.DEFAULT);
+//                val  bitmap: Bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.size);
+//                if(bitmap == null)
+//                {
+//                    return null;
+//                }
+//                else {
+//                    return bitmap
+//                }
+//            } catch( e: Exception) {
+////                e.getMessage();
+//                return null;
+//            }
+//        }
+
 }

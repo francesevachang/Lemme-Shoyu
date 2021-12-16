@@ -16,6 +16,7 @@ data class Ingredient (
     @ColumnInfo(name = "itemName") val itemName: String,
     @ColumnInfo(name = "expireYear") val expireYear: Int,
     @ColumnInfo(name = "expireMonth") val expireMonth: Int,
-    @ColumnInfo(name = "expireDay") val expireDay: Int
+    @ColumnInfo(name = "expireDay") val expireDay: Int,
+    @ColumnInfo(name = "ingredientImage", typeAffinity = ColumnInfo.BLOB) val ingredientImage: ByteArray?
 )
 
