@@ -26,4 +26,7 @@ interface FolderDao {
 
     @Query("SELECT * FROM folderTable")
     fun getAllFolders(): LiveData<List<Folder>>
+
+    @Query("UPDATE folderTable SET folderImageUrl = :newImageUrl WHERE folderName = :folderName")
+    suspend fun updateFolderImageUrl(folderName: String, newImageUrl: String)
 }

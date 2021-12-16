@@ -48,5 +48,11 @@ class FolderViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
+    fun updateFolderImageUrl(folderName: String, newImageUrl: String) {
+        viewModelScope.launch (Dispatchers.IO) {
+            repository?.updateFolderImageUrl(folderName, newImageUrl)
+        }
+    }
+
 
 }
