@@ -1,7 +1,6 @@
 package edu.uw.peihsi5.lemmeshoyu
 
 import android.app.Activity
-import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -10,7 +9,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import java.io.ByteArrayOutputStream
 
@@ -36,22 +34,22 @@ class FridgeAddItemFragment : Fragment() {
 
     fun openCamera() {
         val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        var cameraLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                // There are no request codes
                 val data: Intent? = result.data
                 this.imageResultReceiver(1, result.resultCode, data)
             }
         }
-        resultLauncher.launch(takePictureIntent)
+        cameraLauncher.launch(takePictureIntent)
     }
 
     fun imageResultReceiver(requestCode: Int, resultCode: Int, data: Intent?) {
         val REQUEST_IMAGE_CAPTURE = 1
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
-            val imageBitmap = data?.extras?.get("data") as Bitmap
+            val imageBitmap: Bitmap = data?.extras?.get("data") as Bitmap
 
             val stream = ByteArrayOutputStream()
+            val byteArray: ByteArray = stream.toByteArray() // store this
             imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
 
 //            rootView.findViewById<ImageView>(R.id.test_imageview).setImageBitmap(imageBitmap)
