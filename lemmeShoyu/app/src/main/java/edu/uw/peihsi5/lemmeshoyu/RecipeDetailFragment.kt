@@ -59,21 +59,21 @@ class RecipeDetailFragment : Fragment() {
         }
 
         RecipeApi.retrofitService.getStep(recipe!!.id, API_KEY)
-            .enqueue(object : Callback<StepsResponse> {
+            .enqueue(object : Callback<List<StepsResponse>> {
                 override fun onResponse(
-                    call: Call<StepsResponse>,
-                    response: Response<StepsResponse>
+                    call: Call<List<StepsResponse>>,
+                    response: Response<List<StepsResponse>>
                 ) {
                     val body = response.body()
                     Log.v(TAG, "$body")
-                    adapter = StepsAdapter(response.body()!!.steps)
+                    adapter = StepsAdapter(response.body()?.get(0)?.steps)
                     val recycler = rootView.findViewById<RecyclerView>(R.id.step_recycler_list)
                     recycler.layoutManager = LinearLayoutManager(activity)
                     recycler.adapter = adapter
 
                 }
 
-                override fun onFailure(call: Call<StepsResponse>, t: Throwable) {
+                override fun onFailure(call: Call<List<StepsResponse>>, t: Throwable) {
                     Log.e(TAG, "Failure: ${t.message}")
 
                 }
@@ -86,7 +86,7 @@ class RecipeDetailFragment : Fragment() {
         return rootView
     }
 
-    inner class StepsAdapter(val steps: List<Step>) :
+    inner class StepsAdapter(val steps: List<Step>?) :
         RecyclerView.Adapter<StepsAdapter.ViewHolder>() {
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             //get a reference to the views that we want to modify per element in recyclerView
@@ -105,15 +105,20 @@ class RecipeDetailFragment : Fragment() {
 
         //called whatever the data is connected to the View
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            val theItem = steps[position]
-            holder.stepView.text = (position + 1).toString()+ ". " + theItem.step
-            Log.d(TAG, theItem.step)
-
+            if (steps != null) {
+                val theItem = steps[position]
+                holder.stepView.text = (position + 1).toString() + ". " + theItem.step
+                Log.d(TAG, theItem?.step.toString())
+            }
 
         }
 
         override fun getItemCount(): Int {
-            return steps.size
+            if (steps != null) {
+                return steps.size
+            } else {
+                return 0
+            }
         }
 
 
