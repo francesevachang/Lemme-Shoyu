@@ -44,6 +44,7 @@
                 android:layout_marginBottom="5dp"/>
 
             <TextView
+                android:src="@drawable/ic_camera"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textSize="14dp"
@@ -51,6 +52,25 @@
                 android:text="Enter the name and expiration date."
                 android:textStyle="bold"
                 android:layout_marginBottom="15dp"
+                />
+
+            <ImageView
+                android:id="@+id/fridge_add_ingredient_photo"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                android:background="@color/platinum"
+                android:visibility="gone"
+                />
+
+            <ImageButton
+                android:id="@+id/fridge_add_ingredient_take_pic_button"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:backgroundTint="@color/platinum"
+                app:tint="@color/orange"
+                android:src="@drawable/ic_camera_large"
                 />
 
             <com.google.android.material.textfield.TextInputLayout

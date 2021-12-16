@@ -17,7 +17,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import edu.uw.peihsi5.lemmeshoyu.database.my_fridge_database.Ingredient
+import edu.uw.peihsi5.lemmeshoyu.dialogs.AddFolderDialogFragment
+import edu.uw.peihsi5.lemmeshoyu.dialogs.FridgeAddItemFragment
 import edu.uw.peihsi5.lemmeshoyu.viewmodels.FolderViewModel
 import edu.uw.peihsi5.lemmeshoyu.viewmodels.MyFridgeViewModel
 import retrofit2.Call
@@ -60,6 +63,15 @@ class FridgeHomeFragment : Fragment() {
         val recycler = rootView.findViewById<RecyclerView>(R.id.fridge_list)
         recycler.layoutManager = LinearLayoutManager(activity)
         recycler.adapter = adapter
+
+
+        // add ingredient
+        rootView.findViewById<FloatingActionButton>(R.id.floating_add_ingredient_button).setOnClickListener {
+            // pop up dialog to allow the user take photo of the ingredient and add expired date
+            val dialog = FridgeAddItemFragment()
+            dialog.show(requireActivity().supportFragmentManager, TAG)
+        }
+
 
 //        implement add button
 //        rootView.findViewById<ImageView>(R.id.search_icon).setOnClickListener { searchMovie(rootView) }
