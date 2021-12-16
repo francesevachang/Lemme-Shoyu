@@ -85,13 +85,6 @@ class SearchRecipeFragment : Fragment() {
 
 
     inner class SearchListAdapter(): ListAdapter<Recipe, RecipeViewHolder>(RecipeSearchDiffCallback()){
-//        inner class ViewHolder(view: View): RecyclerView.ViewHolder(view){
-//            //get a reference to the views that we want to modify per element in recyclerView
-//            val recipeCardView: CardView = view.findViewById<CardView>(R.id.recipe_item)
-//            val recipeTextView: TextView = view.findViewById<TextView>(R.id.recipe_text)
-//            val recipePhotoView: ImageView = view.findViewById<ImageView>(R.id.recipe_photo)
-//
-//        }
 
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
