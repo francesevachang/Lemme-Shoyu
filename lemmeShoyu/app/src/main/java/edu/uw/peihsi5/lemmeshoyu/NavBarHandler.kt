@@ -1,9 +1,16 @@
+/**
+ * Pacy Wu: I wrote the class NavBarHandler, which add onClickListener to each item
+ * in the navigation bar, so the user is able to navigation between activities.
+ **/
+
 package edu.uw.peihsi5.lemmeshoyu
 
 import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.provider.MediaStore
 import android.util.Log
+import androidx.core.app.ActivityCompat.startActivityForResult
 import com.google.android.material.tabs.TabLayout
 
 private const val TAG = ".NavBarHandler"

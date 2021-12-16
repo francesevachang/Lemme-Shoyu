@@ -1,3 +1,8 @@
+/**
+ * Pacy Wu: I wrote the data class Folder, which stores the folder information, including
+ * folder name and folder image url.
+ **/
+
 package edu.uw.peihsi5.lemmeshoyu.database
 
 import androidx.annotation.Nullable

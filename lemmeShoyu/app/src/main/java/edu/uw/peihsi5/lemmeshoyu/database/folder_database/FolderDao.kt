@@ -1,3 +1,7 @@
+/**
+ * Pacy Wu: I wrote the FolderDao to query, insert data, and delete data in the local database.
+ **/
+
 package edu.uw.peihsi5.lemmeshoyu.database
 
 import android.database.sqlite.SQLiteException
@@ -22,4 +26,7 @@ interface FolderDao {
 
     @Query("SELECT * FROM folderTable")
     fun getAllFolders(): LiveData<List<Folder>>
+
+    @Query("UPDATE folderTable SET folderImageUrl = :newImageUrl WHERE folderName = :folderName")
+    suspend fun updateFolderImageUrl(folderName: String, newImageUrl: String)
 }

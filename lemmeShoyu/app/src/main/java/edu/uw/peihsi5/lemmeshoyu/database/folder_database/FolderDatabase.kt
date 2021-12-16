@@ -1,3 +1,8 @@
+/**
+ * Pacy Wu: I wrote the FolderDatabase to build the database in companion object,
+ * so there will only be one folder database throughout the app.
+ **/
+
 package edu.uw.peihsi5.lemmeshoyu.database
 
 import android.content.Context

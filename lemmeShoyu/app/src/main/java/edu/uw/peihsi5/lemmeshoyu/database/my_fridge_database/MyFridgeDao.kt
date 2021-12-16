@@ -1,3 +1,7 @@
+/**
+ * Frances Chang: I wrote the MyFridgeDao to query, insert data, and delete data in the local database.
+ **/
+
 package edu.uw.peihsi5.lemmeshoyu.database.my_fridge_database
 
 import android.database.sqlite.SQLiteException

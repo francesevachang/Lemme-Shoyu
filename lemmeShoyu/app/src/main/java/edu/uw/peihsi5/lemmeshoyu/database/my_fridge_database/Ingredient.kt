@@ -1,3 +1,9 @@
+/**
+ * Frances Chang: I wrote the data class Ingredient, which stores the ingredient's information, including
+ * it's name and it's expired date.
+ **/
+
+
 package edu.uw.peihsi5.lemmeshoyu.database.my_fridge_database
 
 import androidx.room.ColumnInfo

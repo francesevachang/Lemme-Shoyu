@@ -1,3 +1,9 @@
+/**
+ * Pacy Wu: I wrote the class RecipeListInFolderFragment, which shows all the recipes
+ * in the selected folder. Each recipe navigates to a detailed page containing all the
+ * instructions and required ingredients.
+ **/
+
 package edu.uw.peihsi5.lemmeshoyu
 
 import android.app.Application
@@ -25,9 +31,6 @@ import edu.uw.peihsi5.lemmeshoyu.adapters.ViewOnClickListenerInterface
 
 private const val TAG = ".RecipeListInFolderFragment"
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
 class RecipeListInFolderFragment : Fragment(), ViewOnClickListenerInterface<Recipe>,
     BindDataToViewHolderInterface<Recipe>, DeleteFromDatabaseInterface<Recipe> {
 
@@ -37,6 +40,7 @@ class RecipeListInFolderFragment : Fragment(), ViewOnClickListenerInterface<Reci
     private lateinit var recipesRecipeListsAdapter: FolderRecipeListsAdapter<Recipe>
     private lateinit var viewModel: RecipeViewModel
 
+    /** Initialized the passed in parameter. **/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val args: RecipeListInFolderFragmentArgs by navArgs()
@@ -44,6 +48,7 @@ class RecipeListInFolderFragment : Fragment(), ViewOnClickListenerInterface<Reci
 
     }
 
+    /** Inflate the fragment view and add the required listener to the element. **/
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -66,10 +71,6 @@ class RecipeListInFolderFragment : Fragment(), ViewOnClickListenerInterface<Reci
         }
         viewModel.allRecipes?.observe(viewLifecycleOwner, recipesObserver)
 
-        // TODO Note: insertRecipe
-//        viewModel.insertRecipe(Recipe(715538, "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs",
-//            "https://spoonacular.com/recipeImages/715538-312x231.jpg", "testFolder2"))
-
         val recycler: RecyclerView = rootView.findViewById(R.id.folders_recyclerview)
         recycler.adapter = recipesRecipeListsAdapter
         recycler.layoutManager = GridLayoutManager(activity, 2)
@@ -83,11 +84,13 @@ class RecipeListInFolderFragment : Fragment(), ViewOnClickListenerInterface<Reci
         _binding = null
     }
 
+    /** The onclickListener of the holder in recyclerview, which will navigate to recipe detail page. **/
     override fun viewOnClickListener(item: Recipe) {
         // TODO
         Log.v(TAG, "navigate to recipe detail fragment")
     }
 
+    /** Bind the given data (recipe) to the given view holder in recycler view. **/
     override fun bindDataToViewHolder(item: Recipe, holder: FolderRecipeListsAdapter<Recipe>.ViewHolder) {
         // load recipe image
         Glide.with(this)
@@ -112,6 +115,7 @@ class RecipeListInFolderFragment : Fragment(), ViewOnClickListenerInterface<Reci
 
     }
 
+    /** Delete the given item, which is a recipe, in the database. **/
     override fun deleteFromDatabase(item: Recipe) {
         viewModel.deleteRecipe(item)
     }

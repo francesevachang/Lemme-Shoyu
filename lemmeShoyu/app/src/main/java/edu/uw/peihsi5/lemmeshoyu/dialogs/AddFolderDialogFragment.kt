@@ -1,3 +1,10 @@
+/**
+ * Pacy Wu: I wrote the AddFolderDialogFragment to let the user add folder in the pop up dialog.
+ * Using it, the dialog will remain in its position when changing the orientation of the phone.
+ * It also deals with errors when the user did not enter folder name or the user enter duplicate
+ * folder name.
+ **/
+
 package edu.uw.peihsi5.lemmeshoyu.dialogs
 
 import edu.uw.peihsi5.lemmeshoyu.R
@@ -20,16 +27,18 @@ private const val TAG = ".AddFolderDialogFragment"
 
 class AddFolderDialogFragment(): DialogFragment() {
 
-
+    /** Inflate the fragment view and add the required listener to the element. **/
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val rootView = inflater.inflate(R.layout.fragment_add_folder_dialog, container, false)
 
+        // add close button listener to close the pop up dialog
         val closeButton = rootView.findViewById<ImageButton>(R.id.add_folder_dialog_close_button)
         closeButton.setOnClickListener {
             this.dismiss()
         }
 
+        // add done button listener to insert the folder
         val doneButton = rootView.findViewById<Button>(R.id.add_folder_dialog_done_button)
         doneButton.setOnClickListener {
             val folderName = rootView.findViewById<TextInputEditText>(R.id.add_folder_dialog_input_text).text.toString().trim()
@@ -45,6 +54,7 @@ class AddFolderDialogFragment(): DialogFragment() {
 
                 this.dismiss()
             } else {
+                // show error message if there is no folder name
                 val errorTextView = rootView.findViewById<TextView>(R.id.add_folder_dialog_error_msg)
                 errorTextView.visibility = View.VISIBLE
             }
@@ -54,6 +64,7 @@ class AddFolderDialogFragment(): DialogFragment() {
         return rootView
     }
 
+    /** When user insert duplicate folder name, a reminder in a Toast will pop up. **/
     private fun insertExceptionHandler() {
         Handler(Looper.getMainLooper()).post {
             val root = requireActivity().findViewById<RelativeLayout>(R.id.root_activity_main)

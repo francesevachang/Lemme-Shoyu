@@ -1,3 +1,7 @@
+/**
+ * Pacy Wu: I wrote the MainActivity to inflate the action bar and add the navigation bar listener.
+ **/
+
 package edu.uw.peihsi5.lemmeshoyu
 
 import android.os.Bundle
@@ -29,8 +33,10 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
+        // add navigation bar listener
         NavBarHandler(this,"Home")
 
+        // the navigation bar light on the selected activity
         val tabLayout = findViewById<TabLayout>(R.id.tab_layout)
         tabLayout.getTabAt(0)!!.select()
 
