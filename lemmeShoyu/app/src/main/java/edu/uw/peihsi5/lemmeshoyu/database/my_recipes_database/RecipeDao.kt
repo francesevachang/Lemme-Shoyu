@@ -1,3 +1,7 @@
+/**
+ * Pacy Wu: I wrote the RecipeDao to query, insert data, and delete data in the local database.
+ **/
+
 package edu.uw.peihsi5.lemmeshoyu.database
 
 import androidx.lifecycle.LiveData

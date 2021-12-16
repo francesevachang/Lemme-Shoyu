@@ -1,3 +1,8 @@
+/**
+ * Pacy Wu: I wrote the data class Recipe, which stores the recipe information, including
+ * recipe name, recipe image url, and the folder it belongs to.
+ **/
+
 package edu.uw.peihsi5.lemmeshoyu.database
 
 import androidx.room.ColumnInfo
