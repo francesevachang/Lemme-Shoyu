@@ -32,29 +32,4 @@ class FridgeAddItemFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_fridge_add_item, container, false)
     }
-
-
-    fun openCamera() {
-        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                // There are no request codes
-                val data: Intent? = result.data
-                this.imageResultReceiver(1, result.resultCode, data)
-            }
-        }
-        resultLauncher.launch(takePictureIntent)
-    }
-
-    fun imageResultReceiver(requestCode: Int, resultCode: Int, data: Intent?) {
-        val REQUEST_IMAGE_CAPTURE = 1
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
-            val imageBitmap = data?.extras?.get("data") as Bitmap
-
-            val stream = ByteArrayOutputStream()
-            imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
-
-//            rootView.findViewById<ImageView>(R.id.test_imageview).setImageBitmap(imageBitmap)
-        }
-    }
 }
