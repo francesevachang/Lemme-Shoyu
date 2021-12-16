@@ -30,7 +30,7 @@ class RecipeDetailFragment : Fragment() {
 
 
     private var recipe: Recipe? = null
-    private val API_KEY = "a819550bd27e4c86943cebc170e07408"
+    private val API_KEY = "594baa11072841208ee7ad173fedd4dc"
     private lateinit var adapter: StepsAdapter
     private val TAG = "RecipeDetailFragment"
 

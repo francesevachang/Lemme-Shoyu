@@ -8,6 +8,7 @@
         android:id="@+id/recipe_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:minHeight="?android:attr/listPreferredItemHeight">
         <RelativeLayout
             android:layout_width="match_parent"
