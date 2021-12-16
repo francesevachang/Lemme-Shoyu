@@ -79,7 +79,6 @@ class FridgeAddItemFragment(): DialogFragment() {
         return rootView
     }
 
-
     fun openCamera() {
         val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         cameraLaucher.launch(takePictureIntent)
@@ -103,38 +102,4 @@ class FridgeAddItemFragment(): DialogFragment() {
             rootView.findViewById<ImageButton>(R.id.fridge_add_ingredient_take_pic_button).visibility = View.GONE
         }
     }
-
-//    inner class ImageBitmapString {
-//        @TypeConverter
-//        fun BitMapToString(bitmap :Bitmap): String? {
-//            val baos: ByteArrayOutputStream = ByteArrayOutputStream();
-//            bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
-//            val b: ByteArray =baos.toByteArray();
-//            val temp: String = Base64.encodeToString(b, Base64.DEFAULT);
-//            if(temp == null)
-//            {
-//                return null;
-//            }
-//            else
-//                return temp;
-//        }
-//
-//        @TypeConverter
-//        fun StringToBitMap(encodedString: String ): Bitmap? {
-//            try {
-//                var encodeByte: ByteArray = Base64.decode(encodedString,Base64.DEFAULT);
-//                val  bitmap: Bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.size);
-//                if(bitmap == null)
-//                {
-//                    return null;
-//                }
-//                else {
-//                    return bitmap
-//                }
-//            } catch( e: Exception) {
-////                e.getMessage();
-//                return null;
-//            }
-//        }
-
 }

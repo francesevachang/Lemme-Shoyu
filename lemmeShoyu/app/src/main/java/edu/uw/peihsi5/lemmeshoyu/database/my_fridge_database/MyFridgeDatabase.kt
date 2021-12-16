@@ -1,5 +1,5 @@
 /**
- * Frances Chang: I wrote the MyFridgeDatabase to build the database in companion object,
+ * Frances Chang and Pacy Wu: We wrote the MyFridgeDatabase to build the database in companion object,
  * so there will only be one my fridge database throughout the app.
  **/
 
@@ -28,7 +28,5 @@ abstract class MyFridgeDatabase : RoomDatabase() {
                 return instance
             }
         }
-
-
     }
 }

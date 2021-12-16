@@ -18,27 +18,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import edu.uw.peihsi5.lemmeshoyu.database.my_fridge_database.Ingredient
-import edu.uw.peihsi5.lemmeshoyu.dialogs.AddFolderDialogFragment
 import edu.uw.peihsi5.lemmeshoyu.dialogs.FridgeAddItemFragment
-import edu.uw.peihsi5.lemmeshoyu.viewmodels.FolderViewModel
 import edu.uw.peihsi5.lemmeshoyu.viewmodels.MyFridgeViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import android.graphics.BitmapFactory
-import android.graphics.Bitmap
-import android.R
-import androidx.core.app.NotificationCompat
 import java.util.*
-import android.app.AlarmManager
-
-import android.app.PendingIntent
-
-import android.content.Intent
-
 
 
 
