@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".FridgeHomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <include layout="@layout/fridge_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
