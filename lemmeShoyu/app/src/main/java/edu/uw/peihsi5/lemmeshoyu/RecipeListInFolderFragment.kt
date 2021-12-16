@@ -7,6 +7,7 @@
 package edu.uw.peihsi5.lemmeshoyu
 
 import android.app.Application
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -55,6 +56,8 @@ class RecipeListInFolderFragment : Fragment(), ViewOnClickListenerInterface<Reci
     ): View? {
 
         _binding = FragmentRecipeListInFolderBinding.inflate(inflater, container, false)
+        val orientation = resources.configuration.orientation
+
         val rootView = binding.root
         recipesRecipeListsAdapter = FolderRecipeListsAdapter(
             requireContext(),
@@ -73,8 +76,13 @@ class RecipeListInFolderFragment : Fragment(), ViewOnClickListenerInterface<Reci
 
         val recycler: RecyclerView = rootView.findViewById(R.id.folders_recyclerview)
         recycler.adapter = recipesRecipeListsAdapter
-        recycler.layoutManager = GridLayoutManager(activity, 2)
-
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // In landscape
+            recycler.layoutManager = GridLayoutManager(activity, 4)
+        } else {
+            // In portrait
+            recycler.layoutManager = GridLayoutManager(activity, 2)
+        }
         return binding.root
 
     }

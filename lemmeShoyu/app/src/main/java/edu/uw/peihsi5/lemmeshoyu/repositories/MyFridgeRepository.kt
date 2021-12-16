@@ -1,5 +1,5 @@
 /**
- * Frances Chang: I wrote the MyFridgeRepository as an entrance of inserting, deleting, and retrieving data
+ * Pacy Wu: I wrote the MyFridgeRepository as an entrance of inserting, deleting, and retrieving data
  * in the my fridge database, which contains all the ingredients the user has.
  **/
 
