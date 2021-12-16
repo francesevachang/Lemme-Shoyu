@@ -66,7 +66,11 @@ class RecipeDetailFragment : Fragment() {
                 ) {
                     val body = response.body()
                     Log.v(TAG, "$body")
-                    adapter = StepsAdapter(response.body()?.get(0)?.steps)
+                    if (body != null) {
+                        for (i in body.indices) {
+                            adapter = StepsAdapter(response.body()?.get(i)?.steps)
+                        }
+                    }
                     val recycler = rootView.findViewById<RecyclerView>(R.id.step_recycler_list)
                     recycler.layoutManager = LinearLayoutManager(activity)
                     recycler.adapter = adapter
@@ -124,15 +128,6 @@ class RecipeDetailFragment : Fragment() {
 
     }
 
-//    inner class StepsAdapter(private val context: Activity, private val arrayList: ArrayList<Step>): ArrayAdapter<Step>(context, R.layout.list_item_step){
-//        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-//            val inflater : LayoutInflater = LayoutInflater.from(context)
-//            val view : View = inflater.inflate(R.layout.list_item_step,null)
-//            val step: TextView = view.findViewById(R.id.step_text)
-//            step.text = (position + 1).toString() + ". " + arrayList[position].step
-//            return view
-//        }
-//
-//    }
+
 
 }
