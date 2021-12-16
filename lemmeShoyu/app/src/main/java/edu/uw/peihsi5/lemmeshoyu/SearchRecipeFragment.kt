@@ -33,7 +33,6 @@ import retrofit2.Response
 class SearchRecipeFragment : Fragment() {
     private val TAG = "SearchRecipeFragment"
     private val API_KEY = "594baa11072841208ee7ad173fedd4dc"
-//    private lateinit var adapter: RecipeAdapter
     private lateinit var searchAdapter: SearchListAdapter
     private lateinit var viewModel: SearchRecipeViewModel
 

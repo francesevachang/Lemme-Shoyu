@@ -108,7 +108,7 @@ class RecipeDetailFragment : Fragment() {
                     val body = response.body()
                     Log.v(TAG, "$body")
                     val listAmount = response.body()?.ingredients
-                    var textView = rootView.findViewById<TextView>(R.id.ingredient_list)
+                    val textView = rootView.findViewById<TextView>(R.id.ingredient_list)
                     if (listAmount != null) {
                         for (i in listAmount.indices) {
                             if (i == 0) {
