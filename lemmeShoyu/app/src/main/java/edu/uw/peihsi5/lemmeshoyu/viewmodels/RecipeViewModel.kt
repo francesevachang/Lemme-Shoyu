@@ -40,5 +40,11 @@ class RecipeViewModel(application: Application, val folderName: String): Android
         }
     }
 
+    fun deleteRecipesWithFolderName(folderName: String) {
+        viewModelScope.launch (Dispatchers.IO) {
+            repository?.deleteRecipesWithFolderName(folderName)
+        }
+    }
+
 
 }

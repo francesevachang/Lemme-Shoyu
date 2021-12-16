@@ -52,7 +52,7 @@ class FridgeAddItemFragment(): DialogFragment() {
         doneButton.setOnClickListener {
             val itemName = rootView.findViewById<TextInputEditText>(R.id.fridge_add_item_dialog_name_text).text.toString().trim()
             val expDate = rootView.findViewById<TextInputEditText>(R.id.fridge_add_item_dialog_date_text).text.toString().trim()
-            if (itemName.isNotEmpty() && expDate.isNotEmpty()) { // TODO: error handling of date format
+            if (itemName.isNotEmpty() && expDate.isNotEmpty()) {
                 val viewModel = ViewModelProvider(
                     this,
                     ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)

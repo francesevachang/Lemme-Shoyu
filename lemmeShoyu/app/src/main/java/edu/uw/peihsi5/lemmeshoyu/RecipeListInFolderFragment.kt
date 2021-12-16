@@ -25,10 +25,12 @@ import edu.uw.peihsi5.lemmeshoyu.database.Recipe
 import edu.uw.peihsi5.lemmeshoyu.databinding.FragmentRecipeListInFolderBinding
 import edu.uw.peihsi5.lemmeshoyu.viewmodels.RecipeViewModel
 import androidx.lifecycle.ViewModel
+import androidx.navigation.fragment.findNavController
 import edu.uw.peihsi5.lemmeshoyu.adapters.BindDataToViewHolderInterface
 import edu.uw.peihsi5.lemmeshoyu.adapters.DeleteFromDatabaseInterface
 import edu.uw.peihsi5.lemmeshoyu.adapters.FolderRecipeListsAdapter
 import edu.uw.peihsi5.lemmeshoyu.adapters.ViewOnClickListenerInterface
+import edu.uw.peihsi5.lemmeshoyu.network.Recipe as RecipeInNetwork
 
 private const val TAG = ".RecipeListInFolderFragment"
 
@@ -65,7 +67,6 @@ class RecipeListInFolderFragment : Fragment(), ViewOnClickListenerInterface<Reci
             this,
             this)
 
-
         val viewModel: RecipeViewModel by viewModels { RecipeViewModelFactory(requireActivity().application, folderName) }
         this.viewModel = viewModel
 
@@ -94,7 +95,11 @@ class RecipeListInFolderFragment : Fragment(), ViewOnClickListenerInterface<Reci
 
     /** The onclickListener of the holder in recyclerview, which will navigate to recipe detail page. **/
     override fun viewOnClickListener(item: Recipe) {
-        // TODO
+
+        val action = RecipeListInFolderFragmentDirections.actionToRecipeDetail(
+            RecipeInNetwork(item.idOnSpoonacular, item.recipeName, item.recipeImageUrl))
+        findNavController().navigate(action)
+
         Log.v(TAG, "navigate to recipe detail fragment")
     }
 
