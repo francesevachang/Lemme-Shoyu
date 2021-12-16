@@ -30,7 +30,7 @@ interface RecipeApiService{
     fun searchRecipe(@Query("query")query:String, @Query("apiKey")apiKey: String):Call<RecipeSearchResponse>
 
     @GET("{id}/ingredientWidget.json")
-    fun getRecipeInfo(@Path("id")recipeID:Int, @Query("apiKey")apiKey: String):Call<RecipeSearchResponse>
+    fun getIngredient(@Path("id")recipeID:Int, @Query("apiKey")apiKey: String):Call<Ingredients>
 
     @GET("{id}/analyzedInstructions")
     fun getStep(@Path("id")recipeID:Int, @Query("apiKey")apiKey: String):Call<List<StepsResponse>>
@@ -72,6 +72,9 @@ data class RecipeSearchResponse(
 
 @Parcelize
 data class Step(
+    @Json(name = "number")
+    val number: Int?,
+
     @Json(name = "step")
     val step: String?
 ): Parcelable
@@ -81,6 +84,7 @@ data class StepsResponse(
     val steps: List<Step>?
 )
 
+
 @Parcelize
 data class Ingredient(
     @Json(name = "value")
@@ -88,13 +92,26 @@ data class Ingredient(
 
     @Json(name = "unit")
     val unit: Double?
-
-
 ): Parcelable
 
+@Parcelize
 data class ValueUnit(
     @Json(name = "us")
     val amountUS: List<Ingredient>?
+): Parcelable
+
+@Parcelize
+data class Amount(
+//    @Json(name = "amount")
+//    val amount: List<ValueUnit>?,
+
+    @Json(name = "name")
+    val name: String?
+): Parcelable
+
+data class Ingredients(
+    @Json(name = "ingredients")
+    val ingredients: List<Amount>?
 )
 
 
