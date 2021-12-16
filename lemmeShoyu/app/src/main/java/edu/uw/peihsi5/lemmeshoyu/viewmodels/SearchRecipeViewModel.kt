@@ -14,7 +14,7 @@ import retrofit2.Response
 
 class SearchRecipeViewModel : ViewModel() {
     private val TAG = "ViewModel"
-    private val API_KEY = "a819550bd27e4c86943cebc170e07408"
+    private val API_KEY = "1e988a60e7124915bea379c4980ec1fa"
     private var _recipeData = MutableLiveData<List<Recipe>>()
     val recipeData: LiveData<List<Recipe>>
     get() = _recipeData

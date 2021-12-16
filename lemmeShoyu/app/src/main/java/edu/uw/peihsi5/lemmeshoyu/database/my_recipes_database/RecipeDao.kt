@@ -28,4 +28,7 @@ interface RecipeDao {
 
     @Query("SELECT * FROM recipesTable")
     fun getAllRecipes(): LiveData<List<Recipe>>
+
+    @Query("DELETE FROM recipesTable WHERE recipeFolder = :folderName")
+    suspend fun deleteRecipesWithFolderName(folderName: String)
 }
