@@ -1,5 +1,6 @@
 package edu.uw.peihsi5.lemmeshoyu
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import edu.uw.peihsi5.lemmeshoyu.database.my_fridge_database.Ingredient
 import edu.uw.peihsi5.lemmeshoyu.dialogs.AddFolderDialogFragment
@@ -26,6 +28,12 @@ import edu.uw.peihsi5.lemmeshoyu.viewmodels.MyFridgeViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.graphics.BitmapFactory
+
+import android.graphics.Bitmap
+
+
+
 
 /**
  * A simple [Fragment] subclass.
@@ -47,7 +55,7 @@ class FridgeHomeFragment : Fragment() {
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_fridge_home, container, false)
 
-        adapter = FridgeListAdapter()
+        adapter = FridgeListAdapter(requireContext())
         viewModel = ViewModelProvider(
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
@@ -80,7 +88,7 @@ class FridgeHomeFragment : Fragment() {
         return rootView
     }
 
-    inner class FridgeListAdapter() : ListAdapter<Ingredient, FridgeListAdapter.ViewHolder>(FridgeDiffCallback()) {
+    inner class FridgeListAdapter(val context: Context) : ListAdapter<Ingredient, FridgeListAdapter.ViewHolder>(FridgeDiffCallback()) {
         /**
          * A ViewHolder that takes in a [view] and holds data for it, in this case, the view is the state
          * result item for a state
@@ -90,6 +98,7 @@ class FridgeHomeFragment : Fragment() {
             val itemDeleteBtn: ImageButton = view.findViewById<ImageButton>(R.id.delete_fridge_item_btn)
             val itemName: TextView = view.findViewById<TextView>(R.id.fridge_list_item_name)
             val itemExpDate: TextView = view.findViewById<TextView>(R.id.fridge_list_item_exp_date)
+            val ingredientImage: ImageView = view.findViewById(R.id.ingredient_image)
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -108,6 +117,10 @@ class FridgeHomeFragment : Fragment() {
 //            }
             holder.itemName.text = item.itemName
             holder.itemExpDate.text = "${item.expireMonth}/${item.expireDay}/${item.expireYear}"
+
+            // bind ingredient image
+            val bitmap = BitmapFactory.decodeByteArray(item.ingredientImage, 0, item.ingredientImage!!.size)
+            holder.ingredientImage.setImageBitmap(bitmap)
         }
     }
 
