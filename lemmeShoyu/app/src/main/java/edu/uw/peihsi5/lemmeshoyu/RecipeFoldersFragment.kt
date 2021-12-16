@@ -8,6 +8,7 @@
 
 package edu.uw.peihsi5.lemmeshoyu
 
+import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
@@ -16,7 +17,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.*
@@ -29,6 +32,7 @@ import edu.uw.peihsi5.lemmeshoyu.adapters.ViewOnClickListenerInterface
 import edu.uw.peihsi5.lemmeshoyu.database.Folder
 import edu.uw.peihsi5.lemmeshoyu.dialogs.AddFolderDialogFragment
 import edu.uw.peihsi5.lemmeshoyu.viewmodels.FolderViewModel
+import edu.uw.peihsi5.lemmeshoyu.viewmodels.RecipeViewModel
 
 
 private const val TAG = ".RecipeFoldersFragment"
@@ -138,8 +142,19 @@ class RecipeFoldersFragment : Fragment(), ViewOnClickListenerInterface<Folder>,
     override fun deleteFromDatabase(item: Folder) {
         viewModel.delete(item)
 
-        // TODO delete from recipe database as well
+        // delete recipes in the folder as well
+        val recipeViewModel: RecipeViewModel by viewModels {
+            RecipeViewModelFactory(requireActivity().application, item.folderName) }
+        recipeViewModel.deleteRecipesWithFolderName(item.folderName)
     }
 
+    inner class RecipeViewModelFactory (application: Application, param: String) :
+        ViewModelProvider.Factory {
+        private val mApplication: Application = application
+        private val mParam: String = param
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return RecipeViewModel(mApplication, mParam) as T
+        }
+    }
 
 }

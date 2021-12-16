@@ -27,6 +27,23 @@
             android:name="folder_name"
             app:argType="string"
             />
+
+        <action
+            android:id="@+id/action_to_RecipeDetail"
+            app:destination="@id/RecipeDetail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/RecipeDetail"
+        android:name="edu.uw.peihsi5.lemmeshoyu.RecipeDetailFragment"
+        android:label="Recipe Detail"
+        tools:layout="@layout/fragment_recipe_detail">
+
+        <argument
+            android:name="recipe"
+            app:argType="edu.uw.peihsi5.lemmeshoyu.network.Recipe"
+            />
+
     </fragment>
 
 </navigation>

@@ -19,8 +19,6 @@ class SearchRecipeViewModel : ViewModel() {
     val recipeData: LiveData<List<Recipe>>
     get() = _recipeData
 
-
-
     fun searchRecipes(query:String){
         RecipeApi.retrofitService.searchRecipe(query, API_KEY).enqueue(object:
             Callback<RecipeSearchResponse> {
