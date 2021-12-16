@@ -79,7 +79,6 @@ data class Step(
 
 
 data class StepsResponse(
-
     @Json(name = "steps")
     val steps: List<Step>
 )
