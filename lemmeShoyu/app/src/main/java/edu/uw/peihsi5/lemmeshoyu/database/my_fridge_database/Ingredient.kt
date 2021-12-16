@@ -5,7 +5,6 @@
  * Pacy Wu: I add the ingredient image entity to store the image in database.
  **/
 
-
 package edu.uw.peihsi5.lemmeshoyu.database.my_fridge_database
 
 import androidx.room.ColumnInfo
@@ -18,6 +17,6 @@ data class Ingredient (
     @ColumnInfo(name = "itemName") val itemName: String,
     @ColumnInfo(name = "expireYear") val expireYear: Int,
     @ColumnInfo(name = "expireMonth") val expireMonth: Int,
-    @ColumnInfo(name = "expireDay") val expireDay: Int
+    @ColumnInfo(name = "expireDay") val expireDay: Int,
+    @ColumnInfo(name = "ingredientImage", typeAffinity = ColumnInfo.BLOB) val ingredientImage: ByteArray?
 )
-
