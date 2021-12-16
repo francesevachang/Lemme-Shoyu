@@ -81,4 +81,20 @@ data class StepsResponse(
     val steps: List<Step>?
 )
 
+@Parcelize
+data class Ingredient(
+    @Json(name = "value")
+    val value: Double?,
+
+    @Json(name = "unit")
+    val unit: Double?
+
+
+): Parcelable
+
+data class ValueUnit(
+    @Json(name = "us")
+    val amountUS: List<Ingredient>?
+)
+
 
