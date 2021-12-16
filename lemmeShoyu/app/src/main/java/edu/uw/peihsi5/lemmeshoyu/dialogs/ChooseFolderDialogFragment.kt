@@ -7,22 +7,26 @@
 
 package edu.uw.peihsi5.lemmeshoyu.dialogs
 
+import android.app.Application
 import edu.uw.peihsi5.lemmeshoyu.R
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import edu.uw.peihsi5.lemmeshoyu.database.Folder
+import edu.uw.peihsi5.lemmeshoyu.database.Recipe
 import edu.uw.peihsi5.lemmeshoyu.viewmodels.FolderViewModel
+import edu.uw.peihsi5.lemmeshoyu.viewmodels.RecipeViewModel
 
 private const val TAG = ".ChooseFolderDialogFragment"
 
-class ChooseFolderDialogFragment(): DialogFragment() {
+class ChooseFolderDialogFragment(private val recipe: edu.uw.peihsi5.lemmeshoyu.network.Recipe): DialogFragment() {
 
     /** Inflate the fragment view and add the required listener to the element. **/
     override fun onCreateView(
@@ -63,14 +67,26 @@ class ChooseFolderDialogFragment(): DialogFragment() {
         val doneButton = rootView.findViewById<Button>(R.id.choose_folder_dialog_done_button)
         doneButton.setOnClickListener {
             val selectedFolder: String = dropdownAutocompleteTextView.text.toString()
-            if (selectedFolder.isEmpty()) { // nothing is selected
+            if (selectedFolder.isEmpty()) { // when nothing is selected
                 val errorTextView = rootView.findViewById<TextView>(R.id.choose_folder_dialog_error_msg)
                 errorTextView.visibility = View.VISIBLE
             } else {
-                // TODO insert the recipe to the selected folder
+                // add the recipe to the selected folder
+                val recipeViewModel: RecipeViewModel by viewModels {
+                    RecipeViewModelFactory(requireActivity().application, selectedFolder) }
+                recipeViewModel.insertRecipe(Recipe(this.recipe.id, this.recipe.title, this.recipe.imagePath, selectedFolder))
                 this.dismiss()
             }
         }
         return rootView
+    }
+
+    inner class RecipeViewModelFactory (application: Application, param: String) :
+        ViewModelProvider.Factory {
+        private val mApplication: Application = application
+        private val mParam: String = param
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return RecipeViewModel(mApplication, mParam) as T
+        }
     }
 }
