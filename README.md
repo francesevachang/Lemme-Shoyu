@@ -16,3 +16,8 @@
 1. You can add the ingredient you have by pressing the add button.
 2. Take a picture of you ingredient, put in the text of the ingredient and the expired date in the format of MM/DD/YYYY.
 3. Press Done button. You will see it appear in the list.
+
+# What changes we made from the proposal?
+1. The folders and recipes list cannot be reordered and cannot change name. However, we add the animations of the folder when deleting.
+2. We didn't use the image detected machine learning algorithm in my fridge page. However, we remain the part of taking the picture of the ingredients.
+3. We didn't use QuickChart API to show the nutritions of the recipes.
