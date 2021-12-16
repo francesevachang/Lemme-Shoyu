@@ -1,3 +1,9 @@
+/**
+ * Pacy Wu: I wrote the MyFridgeActivity to inflate the action bar and add the navigation bar listener.
+ **/
+
+
+
 package edu.uw.peihsi5.lemmeshoyu
 
 import androidx.appcompat.app.AppCompatActivity
