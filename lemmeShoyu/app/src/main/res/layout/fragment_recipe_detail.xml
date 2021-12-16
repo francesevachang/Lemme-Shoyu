@@ -33,7 +33,7 @@
             android:id="@+id/add_recipe_to_folder_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/recipe_photo"
+            android:layout_below="@id/recipe_title"
             android:layout_alignParentEnd="true"
             app:fabSize="mini"
             app:srcCompat="@drawable/ic_plus"
