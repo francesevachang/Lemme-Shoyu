@@ -100,14 +100,14 @@ data class ValueUnit(
     val amountUS: List<Ingredient>?
 ): Parcelable
 
-
+@Parcelize
 data class Amount(
     @Json(name = "amount")
     val amount: List<ValueUnit>?,
 
     @Json(name = "name")
     val name: String?
-)
+): Parcelable
 
 data class Ingredients(
     @Json(name = "ingredients")

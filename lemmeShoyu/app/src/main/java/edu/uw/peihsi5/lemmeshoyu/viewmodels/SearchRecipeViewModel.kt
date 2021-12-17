@@ -28,7 +28,9 @@ class SearchRecipeViewModel : ViewModel() {
                 val body = response.body()
                 Log.v(TAG, "$body")
                 val recipes = body?.results
-                _recipeData.value = recipes!!
+                if(recipes != null) {
+                    _recipeData.value = recipes!!
+                }
 
             }
 
