@@ -24,7 +24,7 @@ class RecipeDetailFragment : Fragment() {
 
 
     private var recipe: Recipe? = null
-    private val API_KEY = "594baa11072841208ee7ad173fedd4dc"
+    private val API_KEY = "1e988a60e7124915bea379c4980ec1fa"
     private val TAG = "RecipeDetailFragment"
 
 
@@ -98,17 +98,23 @@ class RecipeDetailFragment : Fragment() {
                 ) {
                     val body = response.body()
                     Log.v(TAG, "$body")
-                    val listStep = response.body()?.get(0)?.steps
-                    var stepTextView = rootView.findViewById<TextView>(R.id.step_list)
-                    if (listStep != null) {
-                        for (i in listStep.indices) {
-                            if (i == 0) {
-                                stepTextView.text = listStep[i].number.toString() + ". " + listStep[i].step
-                            } else {
-                                stepTextView.append("\n\n" + listStep[i].number.toString() + ". " + listStep[i].step)
+                    if (body!!.isNotEmpty()) {
+                        val listStep = response.body()?.get(0)?.steps
+                        var stepTextView = rootView.findViewById<TextView>(R.id.step_list)
+                        if (listStep != null) {
+                            for (i in listStep.indices) {
+                                if (i == 0) {
+                                    stepTextView.text = listStep[i].number.toString() + ". " + listStep[i].step
+                                } else {
+                                    stepTextView.append("\n\n" + listStep[i].number.toString() + ". " + listStep[i].step)
+                                }
                             }
                         }
+                    } else {
+                        var stepTextView = rootView.findViewById<TextView>(R.id.step_list)
+                        stepTextView.text = "There is no steps provided"
                     }
+
 
                 }
 

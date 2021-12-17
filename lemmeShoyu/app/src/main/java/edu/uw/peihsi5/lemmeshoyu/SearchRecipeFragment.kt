@@ -48,6 +48,8 @@ class SearchRecipeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        searchAdapter = SearchListAdapter()
+
         viewModel = ViewModelProvider(this).get(SearchRecipeViewModel::class.java)
         val recipeObserver = Observer<List<Recipe>>{
             Log.v(TAG, "Updating: $it")
@@ -60,13 +62,12 @@ class SearchRecipeFragment : Fragment() {
 
         val rootView =  inflater.inflate(R.layout.fragment_search_recipe, container, false)
 
-
+        val recycler = rootView.findViewById<RecyclerView>(R.id.recycler_list)
+        recycler.layoutManager = LinearLayoutManager(activity)
+        recycler.adapter = searchAdapter
 
         rootView.findViewById<Button>(R.id.search).setOnClickListener{
-            searchAdapter = SearchListAdapter()
-            val recycler = rootView.findViewById<RecyclerView>(R.id.recycler_list)
-            recycler.layoutManager = LinearLayoutManager(activity)
-            recycler.adapter = searchAdapter
+
             val input = rootView.findViewById<EditText>(R.id.edit_input).text.toString()
             Log.v(TAG, "Searching recipes for $input")
             viewModel.searchRecipes(input)
@@ -104,6 +105,7 @@ class SearchRecipeFragment : Fragment() {
                 Glide.with(itemView.context).load(recipe.imagePath).into(recipePhoto)
                 recipeText.text = recipe.title
                 itemView.findViewById<CardView>(R.id.recipe_item).setOnClickListener{
+                    Log.v(TAG, recipe.toString())
                     val action = SearchRecipeFragmentDirections.actionToRecipeDetailFragment(recipe)
                     findNavController().navigate(action)
                 }
