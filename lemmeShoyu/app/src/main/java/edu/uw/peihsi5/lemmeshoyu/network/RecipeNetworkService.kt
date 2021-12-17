@@ -91,19 +91,19 @@ data class Ingredient(
     val value: Double?,
 
     @Json(name = "unit")
-    val unit: Double?
+    val unit: String?
 ): Parcelable
 
 @Parcelize
 data class ValueUnit(
     @Json(name = "us")
-    val amountUS: List<Ingredient>?
+    val amountUS: Ingredient?
 ): Parcelable
 
 @Parcelize
 data class Amount(
     @Json(name = "amount")
-    val amount: List<ValueUnit>?,
+    val amount: ValueUnit?,
 
     @Json(name = "name")
     val name: String?
