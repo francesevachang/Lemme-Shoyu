@@ -28,6 +28,7 @@ class FolderRepository(private val folderDao: FolderDao) {
         folderDao.deleteAllFolders()
     }
 
+    /** Update the folder image url to the given information **/
     suspend fun updateFolderImageUrl(folderName: String, newImageUrl: String) {
         folderDao.updateFolderImageUrl(folderName, newImageUrl)
     }

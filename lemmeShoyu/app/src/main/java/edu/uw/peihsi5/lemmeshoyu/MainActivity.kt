@@ -42,12 +42,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /** Create the menu **/
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
+    /** The on click listener for the menu **/
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -58,6 +60,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /** Support the navigation to previous page with back button **/
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_home)
         return navController.navigateUp(appBarConfiguration)
