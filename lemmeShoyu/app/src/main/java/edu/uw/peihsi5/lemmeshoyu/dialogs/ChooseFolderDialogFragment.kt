@@ -85,6 +85,7 @@ class ChooseFolderDialogFragment(private val recipe: edu.uw.peihsi5.lemmeshoyu.n
         return rootView
     }
 
+    /** The view model factory to build view model **/
     inner class RecipeViewModelFactory (application: Application, param: String) :
         ViewModelProvider.Factory {
         private val mApplication: Application = application

@@ -1,6 +1,9 @@
 package edu.uw.peihsi5.lemmeshoyu.dialogs
 
 import edu.uw.peihsi5.lemmeshoyu.R
+import android.app.Activity
+import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,9 +14,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import edu.uw.peihsi5.lemmeshoyu.database.my_fridge_database.Ingredient
 import edu.uw.peihsi5.lemmeshoyu.viewmodels.MyFridgeViewModel
-import android.app.Activity
-import android.content.Intent
-import android.graphics.Bitmap
 import android.provider.MediaStore
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
@@ -35,6 +35,8 @@ class FridgeAddItemFragment(): DialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
+        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+
         rootView = inflater.inflate(R.layout.fragment_fridge_add_item, container, false)
 
         // add close button listener to close pop up dialog
@@ -50,7 +52,7 @@ class FridgeAddItemFragment(): DialogFragment() {
         doneButton.setOnClickListener {
             val itemName = rootView.findViewById<TextInputEditText>(R.id.fridge_add_item_dialog_name_text).text.toString().trim()
             val expDate = rootView.findViewById<TextInputEditText>(R.id.fridge_add_item_dialog_date_text).text.toString().trim()
-            if (itemName.isNotEmpty() && expDate.isNotEmpty()) { // TODO: error handling of date format
+            if (itemName.isNotEmpty() && expDate.isNotEmpty()) {
                 val viewModel = ViewModelProvider(
                     this,
                     ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
@@ -87,9 +89,10 @@ class FridgeAddItemFragment(): DialogFragment() {
     fun imageResultReceiver(requestCode: Int, resultCode: Int, data: Intent?) {
         val REQUEST_IMAGE_CAPTURE = 1
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
-            val imageBitmap = data?.extras?.get("data") as Bitmap
+            val imageBitmap: Bitmap = data?.extras?.get("data") as Bitmap
 
             val stream = ByteArrayOutputStream()
+            val byteArray: ByteArray = stream.toByteArray() // store this
             imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
 
             val ingredientPhoto = rootView.findViewById<ImageView>(R.id.fridge_add_ingredient_photo)

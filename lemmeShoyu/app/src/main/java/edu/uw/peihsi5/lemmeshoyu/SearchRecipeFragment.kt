@@ -41,9 +41,7 @@ class SearchRecipeFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
 
-
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,8 +73,6 @@ class SearchRecipeFragment : Fragment() {
 
         }
         return rootView
-
-
 
 
     }

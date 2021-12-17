@@ -29,7 +29,11 @@ class RecipeRepository(private val recipeDao: RecipeDao) {
     /** Get all recipes in the given folder in the database and return it as a LiveData object **/
     fun getAllRecipesInFolder(folderName: String): LiveData<List<Recipe>>{
         return recipeDao.getAllRecipesInFolder(folderName)
+    }
 
+    /** Delte recipes in the given folder **/
+    suspend fun deleteRecipesWithFolderName(folderName: String) {
+        recipeDao.deleteRecipesWithFolderName(folderName)
     }
 
 }
