@@ -25,8 +25,6 @@ class RecipeDetailFragment : Fragment() {
 
     private var recipe: Recipe? = null
     private val API_KEY = "594baa11072841208ee7ad173fedd4dc"
-    private lateinit var stepsAdapter: StepsAdapter
-    private lateinit var ingredientsAdapter: IngredientAdapter
     private val TAG = "RecipeDetailFragment"
 
 
@@ -53,52 +51,7 @@ class RecipeDetailFragment : Fragment() {
             dialog.show(requireActivity().supportFragmentManager, "Choose Folder Dialog")
         }
 
-//        RecipeApi.retrofitService.getStep(recipe!!.id, API_KEY)
-//            .enqueue(object : Callback<List<StepsResponse>> {
-//                override fun onResponse(
-//                    call: Call<List<StepsResponse>>,
-//                    response: Response<List<StepsResponse>>
-//                ) {
-//                    val body = response.body()
-//                    Log.v(TAG, "$body")
-//                    stepsAdapter = StepsAdapter(response.body()?.get(0)?.steps)
-//
-//                    val recycler = rootView.findViewById<RecyclerView>(R.id.step_recycler_list)
-//                    recycler.layoutManager = LinearLayoutManager(activity)
-//                    recycler.adapter = stepsAdapter
-//
-//                }
-//
-//                override fun onFailure(call: Call<List<StepsResponse>>, t: Throwable) {
-//                    Log.e(TAG, "Failure: ${t.message}")
-//
-//                }
-//
-//
-//            })
 
-//        RecipeApi.retrofitService.getIngredient(recipe!!.id, API_KEY)
-//            .enqueue(object : Callback<Ingredients> {
-//                override fun onResponse(
-//                    call: Call<Ingredients>,
-//                    response: Response<Ingredients>
-//                ) {
-//                    val body = response.body()
-//                    Log.v(TAG, "$body")
-//                    ingredientsAdapter = IngredientAdapter(response.body()?.ingredients)
-//                    val recycler = rootView.findViewById<RecyclerView>(R.id.ingredient_recycler_list)
-//                    recycler.layoutManager = LinearLayoutManager(activity)
-//                    recycler.adapter = ingredientsAdapter
-//
-//                }
-//
-//                override fun onFailure(call: Call<Ingredients>, t: Throwable) {
-//                    Log.e(TAG, "Failure: ${t.message}")
-//
-//                }
-//
-//
-//            })
         RecipeApi.retrofitService.getIngredient(recipe!!.id, API_KEY)
             .enqueue(object : Callback<Ingredients> {
                 override fun onResponse(
@@ -111,38 +64,18 @@ class RecipeDetailFragment : Fragment() {
                     val textView = rootView.findViewById<TextView>(R.id.ingredient_list)
                     if (listAmount != null) {
                         for (i in listAmount.indices) {
+                            val listValueUnit = listAmount[i].amount
+                            val amountUS = listValueUnit?.amountUS
+                            val unit = amountUS?.unit
+                            val value = amountUS?.value
                             if (i == 0) {
-                                textView.text = listAmount[i].name
+                                textView.text = value.toString() + " " + unit + " " + listAmount[i].name
                             } else {
-                                textView.append("\n\n" + listAmount[i].name)
+                                textView.append("\n\n" + value.toString() + " " + unit + " " + listAmount[i].name)
                             }
                         }
                     }
 
-//                    if (listAmount != null) {
-//                        for (i in listAmount.indices) {
-//                            val listValueUnit = listAmount[i].amount
-//                            if (listValueUnit != null) {
-//                                for(j in listValueUnit.indices){
-//                                    val listIngredient =  listValueUnit[j].amountUS
-//                                    if (listIngredient != null) {
-//                                        for(k in listIngredient.indices){
-//                                            val unit = listIngredient[k].unit.toString()
-//                                            val value = listIngredient[k].value.toString()
-//                                            if (i == 0) {
-//                                                textView.text = unit + " " + value + " " + listAmount[i].name
-//                                            } else {
-//                                                textView.append("\n\n" + unit + " " + value + " " + listAmount[i].name)
-//                                            }
-//
-//                                        }
-//                                    }
-//
-//                                }
-//
-//                            }
-//                        }
-//                    }
 
 
 
@@ -192,80 +125,6 @@ class RecipeDetailFragment : Fragment() {
         return rootView
     }
 
-    inner class StepsAdapter(val steps: List<Step>?) :
-        RecyclerView.Adapter<StepsAdapter.ViewHolder>() {
-        inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            //get a reference to the views that we want to modify per element in recyclerView
-            val stepView: TextView = view.findViewById<TextView>(R.id.step_text)
-
-        }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val inflatedView = LayoutInflater.from(parent.context).inflate(
-                R.layout.list_item_step, //this xml
-                parent,
-                false
-            )
-            return ViewHolder(inflatedView)
-        }
-
-        //called whatever the data is connected to the View
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            if (steps != null) {
-                val theItem = steps[position]
-                holder.stepView.text = theItem.number.toString() + ". " + theItem.step
-                Log.d(TAG, theItem.toString())
-            }
-
-        }
-
-        override fun getItemCount(): Int {
-            if (steps != null) {
-                return steps.size
-            } else {
-                return 0
-            }
-        }
-
-
-    }
-
-    inner class IngredientAdapter(val ingredients: List<Amount>?) :
-        RecyclerView.Adapter<IngredientAdapter.ViewHolder>() {
-        inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            //get a reference to the views that we want to modify per element in recyclerView
-            val ingredientView: TextView = view.findViewById<TextView>(R.id.ingredient_text)
-
-        }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val inflatedView = LayoutInflater.from(parent.context).inflate(
-                R.layout.list_item_ingredient_name, //this xml
-                parent,
-                false
-            )
-            return ViewHolder(inflatedView)
-        }
-
-
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            if (ingredients != null) {
-                val theItem = ingredients[position]
-                holder.ingredientView.text = theItem.name
-                Log.d(TAG, theItem.name.toString())
-            }
-        }
-
-        override fun getItemCount(): Int {
-            if (ingredients != null) {
-                return ingredients.size
-            } else {
-                return 0
-            }
-        }
-
-
-    }
 
 
 

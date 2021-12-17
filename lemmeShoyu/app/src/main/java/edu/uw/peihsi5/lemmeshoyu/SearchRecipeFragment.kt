@@ -83,8 +83,7 @@ class SearchRecipeFragment : Fragment() {
 
 
 
-    inner class SearchListAdapter(): ListAdapter<Recipe, RecipeViewHolder>(RecipeSearchDiffCallback()){
-
+    inner class SearchListAdapter(): ListAdapter<Recipe, SearchListAdapter.RecipeViewHolder>(RecipeSearchDiffCallback()){
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
             val inflatedView = LayoutInflater.from(parent.context).inflate(
@@ -100,25 +99,26 @@ class SearchRecipeFragment : Fragment() {
             val theItem = getItem(position)
             return holder.bind(theItem)
         }
+        inner class RecipeViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
+            val recipeText: TextView = itemView.findViewById<TextView>(R.id.recipe_text)
+            val recipePhoto: ImageView = itemView.findViewById<ImageView>(R.id.recipe_photo)
 
 
-    }
-
-    inner class RecipeViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
-        val recipeText: TextView = itemView.findViewById<TextView>(R.id.recipe_text)
-        val recipePhoto: ImageView = itemView.findViewById<ImageView>(R.id.recipe_photo)
-
-
-        fun bind(recipe: Recipe) {
-            Glide.with(itemView.context).load(recipe.imagePath).into(recipePhoto)
-            recipeText.text = recipe.title
-            itemView.findViewById<CardView>(R.id.recipe_item).setOnClickListener{
-                val action = SearchRecipeFragmentDirections.actionToRecipeDetailFragment(recipe)
-                findNavController().navigate(action)
+            fun bind(recipe: Recipe) {
+                Glide.with(itemView.context).load(recipe.imagePath).into(recipePhoto)
+                recipeText.text = recipe.title
+                itemView.findViewById<CardView>(R.id.recipe_item).setOnClickListener{
+                    val action = SearchRecipeFragmentDirections.actionToRecipeDetailFragment(recipe)
+                    findNavController().navigate(action)
+                }
             }
+
         }
 
+
     }
+
+
 
 
 
