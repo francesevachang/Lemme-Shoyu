@@ -31,6 +31,7 @@ class RecipeRepository(private val recipeDao: RecipeDao) {
         return recipeDao.getAllRecipesInFolder(folderName)
     }
 
+    /** Delte recipes in the given folder **/
     suspend fun deleteRecipesWithFolderName(folderName: String) {
         recipeDao.deleteRecipesWithFolderName(folderName)
     }

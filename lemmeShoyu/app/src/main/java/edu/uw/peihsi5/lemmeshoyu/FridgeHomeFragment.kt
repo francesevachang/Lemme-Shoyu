@@ -1,6 +1,7 @@
 package edu.uw.peihsi5.lemmeshoyu
 
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,15 +15,12 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import edu.uw.peihsi5.lemmeshoyu.database.my_fridge_database.Ingredient
 import edu.uw.peihsi5.lemmeshoyu.dialogs.FridgeAddItemFragment
 import edu.uw.peihsi5.lemmeshoyu.viewmodels.MyFridgeViewModel
 import android.graphics.BitmapFactory
+import androidx.recyclerview.widget.*
 import java.util.*
 
 
@@ -47,6 +45,9 @@ class FridgeHomeFragment : Fragment() {
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_fridge_home, container, false)
 
+        val orientation = resources.configuration.orientation
+
+
         adapter = FridgeListAdapter(requireContext())
         viewModel = ViewModelProvider(
             this,
@@ -60,7 +61,13 @@ class FridgeHomeFragment : Fragment() {
         viewModel.allIngredients?.observe(viewLifecycleOwner, resultsObserver)
 
         val recycler = rootView.findViewById<RecyclerView>(R.id.fridge_list)
-        recycler.layoutManager = LinearLayoutManager(activity)
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // In landscape
+            recycler.layoutManager = GridLayoutManager(activity, 2)
+        } else {
+            // In portrait
+            recycler.layoutManager = LinearLayoutManager(activity)
+        }
         recycler.adapter = adapter
 
         rootView.findViewById<FloatingActionButton>(R.id.floating_add_ingredient_button).setOnClickListener {

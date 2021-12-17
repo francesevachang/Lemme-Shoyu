@@ -49,6 +49,7 @@
         android:textColor="@color/black"
         android:text="@string/test_fridge_list_item_1_exp"
         android:layout_toRightOf="@id/fridge_list_item_name"
+        android:layout_alignParentRight="true"
         />
 
 </RelativeLayout>
