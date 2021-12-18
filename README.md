@@ -17,7 +17,7 @@
 
 - My Fridge page
 1. You can add the ingredient you have by pressing the add button.
-2. Take a picture of you ingredient, put in the text of the ingredient and the expired date in the format of MM/DD/YYYY.
+2. Take a picture of your ingredient, put in the text of the ingredient and the expired date in the format of MM/DD/YYYY (ex: 12/30/2021).
 3. Press Done button. You will see it appear in the list.
 4. When you change the orientation to the horizontal view, it will become a grid view with two items in a row. 
 
