@@ -29,6 +29,6 @@ class DatePickerFragment(view: View) : DialogFragment(), DatePickerDialog.OnDate
     }
 
     override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
-        originalView.findViewById<TextView>(R.id.day_picked).text = "Expiration date: $month/$day/$year"
+        originalView.findViewById<TextView>(R.id.day_picked).text = "${month + 1}/$day/$year"
     }
 }

@@ -19,7 +19,6 @@ import edu.uw.peihsi5.lemmeshoyu.database.my_fridge_database.Ingredient
 import edu.uw.peihsi5.lemmeshoyu.viewmodels.MyFridgeViewModel
 import android.provider.MediaStore
 import android.util.Log
-import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -27,7 +26,6 @@ import edu.uw.peihsi5.lemmeshoyu.DatePickerFragment
 import edu.uw.peihsi5.lemmeshoyu.DatePickerFragmentDirections
 import android.view.WindowManager
 import android.widget.ImageView
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.GridLayoutManager
 import java.io.ByteArrayOutputStream
 
