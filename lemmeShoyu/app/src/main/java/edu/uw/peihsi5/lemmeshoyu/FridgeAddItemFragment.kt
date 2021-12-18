@@ -1,3 +1,8 @@
+/**
+ * Frances Chang: I wrote the fragment in the My fridge activity that acts as a fridge storing
+ * items with an expiration date created and specified by the user.
+ */
+
 package edu.uw.peihsi5.lemmeshoyu.dialogs
 
 import android.app.ActionBar
@@ -31,6 +36,12 @@ import java.io.ByteArrayOutputStream
 
 private const val TAG = "FridgeAddItemDialogFragment"
 
+/**
+ * This is a fragement that displays the "fridge" in which ingredients created by the user, their
+ * expiration dates, and the corresponding photo uploaded by the user are displayed. There is an add
+ * button for the user to add an item and a delete item for each ingredient for the user to delete
+ * that ingredient.
+ */
 class FridgeAddItemFragment(): DialogFragment() {
 
     private lateinit var rootView: View
@@ -43,10 +54,15 @@ class FridgeAddItemFragment(): DialogFragment() {
     }
     private lateinit var imageByteArray: ByteArray
 
+    /** Handles functionalities when the fragment is created */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
+    /**
+     * Handles functionalities when the view of the fragment is created, including setting event
+     * handlers for the buttons in the fragment.
+     */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater.inflate(R.layout.fragment_fridge_add_item, container, false)
 
@@ -76,33 +92,6 @@ class FridgeAddItemFragment(): DialogFragment() {
                 ).get(MyFridgeViewModel::class.java)
 
                 val day = rootView.findViewById<TextView>(R.id.day_picked).text
-                Log.v(TAG, "day == null? ${day == null}, day == ''? ${day == ""}")
-//                if (day == null) {
-//                    Log.v(TAG, "day is null")
-//                    viewModel.insert(
-//                        Ingredient(
-//                            itemName = itemName,
-//                            expireMonth = null,
-//                            expireDay = null,
-//                            expireYear = null,
-//                            ingredientImage = imageByteArray
-//                        )
-//                    ) {
-////                    this.insertExceptionHandler()
-//                    }
-//                } else {
-//                    viewModel.insert(
-//                        Ingredient(
-//                            itemName = itemName,
-//                            expireMonth = day.substring(0, 2).toInt(),
-//                            expireDay = day.substring(3, 5).toInt(),
-//                            expireYear = day.substring(6).toInt(),
-//                            ingredientImage = imageByteArray
-//                        )
-//                    ) {
-////                    this.insertExceptionHandler()
-//                    }
-//                }
 
                 viewModel.insert(
                     Ingredient(
@@ -112,10 +101,7 @@ class FridgeAddItemFragment(): DialogFragment() {
                         expireYear = day.substring(6).toInt(),
                         ingredientImage = imageByteArray
                     )
-                ) {
-//                    this.insertExceptionHandler()
-                }
-
+                ) { }
                 this.dismiss()
             } else {
                 val errorTextView = rootView.findViewById<TextView>(R.id.fridge_add_item_dialog_error_msg)
