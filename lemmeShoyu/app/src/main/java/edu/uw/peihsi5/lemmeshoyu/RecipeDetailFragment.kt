@@ -26,7 +26,7 @@ class RecipeDetailFragment : Fragment() {
 
 
     private var recipe: Recipe? = null
-    private val API_KEY = "1e988a60e7124915bea379c4980ec1fa"
+    private val API_KEY = "a819550bd27e4c86943cebc170e07408"
     private val TAG = "RecipeDetailFragment"
 
     //connect to the fragment's argument
