@@ -31,6 +31,34 @@
             app:destination="@id/FridgeHomeFragment"
             />
 
+<!--        <argument-->
+<!--            android:name="year"-->
+<!--            app:argType="integer"-->
+<!--            />-->
+
+<!--        <argument-->
+<!--            android:name="month"-->
+<!--            app:argType="integer"-->
+<!--            />-->
+
+<!--        <argument-->
+<!--            android:name="day"-->
+<!--            app:argType="integer"-->
+<!--            />-->
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/DatePickerFragment"
+        android:name="edu.uw.peihsi5.lemmeshoyu.DatePickerFragment"
+        android:label="date_picker"
+        >
+
+        <action
+            android:id="@+id/action_to_FridgeAddItemFragment"
+            app:destination="@id/FridgeAddItemFragment"
+            />
+
     </fragment>
 
 </navigation>
