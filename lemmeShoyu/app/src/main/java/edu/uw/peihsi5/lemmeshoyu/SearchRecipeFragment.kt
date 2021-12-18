@@ -66,7 +66,7 @@ class SearchRecipeFragment : Fragment() {
 
 
 
-        rootView.findViewById<Button>(R.id.search).setOnClickListener{
+        rootView.findViewById<Button>(R.id.search_button).setOnClickListener{
             val input = rootView.findViewById<EditText>(R.id.edit_input).text.toString()
             Log.v(TAG, "Searching recipes for $input")
             viewModel.searchRecipes(input)
