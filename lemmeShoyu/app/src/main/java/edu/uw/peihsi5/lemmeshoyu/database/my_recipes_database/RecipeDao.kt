@@ -12,6 +12,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy.*
 import androidx.room.Query
 
+/** The recipe dao that query the recipe database **/
 @Dao
 interface RecipeDao {
     @Insert(onConflict = IGNORE)

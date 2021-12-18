@@ -1,5 +1,5 @@
 /**
- * Pacy Wu: We wrote the MyFridgeDao to query, insert data,
+ * Pacy Wu: I wrote the MyFridgeDao to query, insert data,
  * and delete data in the local database.
  **/
 
@@ -13,6 +13,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy.*
 import androidx.room.Query
 
+/** The my fridge dao that query the my fridge database **/
 @Dao
 interface MyFridgeDao {
     @Insert(onConflict = ABORT)

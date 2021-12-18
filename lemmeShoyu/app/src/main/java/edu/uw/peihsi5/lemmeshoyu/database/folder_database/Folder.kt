@@ -10,6 +10,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/** The folder class that contains the information of folder name and folder image url **/
 @Entity(tableName = "folderTable")
 data class Folder (
     @PrimaryKey val folderName: String, // no duplicates

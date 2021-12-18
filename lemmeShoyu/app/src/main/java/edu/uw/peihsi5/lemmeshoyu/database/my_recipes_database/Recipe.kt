@@ -9,6 +9,10 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/**
+ * The recipe class that contains information about recipe id recipe name, recipe image url,
+ * and the folder that contains recipe
+ **/
 @Entity (tableName = "recipesTable")
 data class Recipe (
     @PrimaryKey val idOnSpoonacular: Int,

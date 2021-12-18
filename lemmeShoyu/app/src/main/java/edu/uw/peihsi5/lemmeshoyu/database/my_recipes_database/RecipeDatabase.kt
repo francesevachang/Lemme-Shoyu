@@ -12,6 +12,7 @@ import androidx.room.RoomDatabase
 import edu.uw.peihsi5.lemmeshoyu.database.Recipe
 import edu.uw.peihsi5.lemmeshoyu.database.RecipeDao
 
+/** Create an instance of recipe database **/
 @Database(entities = arrayOf(Recipe::class), version = 1, exportSchema = false)
 abstract class RecipeDatabase : RoomDatabase() {
     abstract fun getRecipeDao(): RecipeDao

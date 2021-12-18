@@ -12,6 +12,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy.*
 import androidx.room.Query
 
+/** The folder dao that query the folder database **/
 @Dao
 interface FolderDao {
     @Insert(onConflict = ABORT)

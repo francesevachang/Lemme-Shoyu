@@ -1,5 +1,5 @@
 /**
- * Pacy Wu: We wrote the MyFridgeDatabase to build the database in companion object,
+ * Pacy Wu: I wrote the MyFridgeDatabase to build the database in companion object,
  * so there will only be one my fridge database throughout the app.
  **/
 
@@ -10,6 +10,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
+/** Create an instance of my fridge database **/
 @Database(entities = arrayOf(Ingredient::class), version = 2, exportSchema = false)
 abstract class MyFridgeDatabase : RoomDatabase() {
     abstract fun getMyFridgeDao(): MyFridgeDao
