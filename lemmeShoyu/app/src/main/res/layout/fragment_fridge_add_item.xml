@@ -30,29 +30,28 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:layout_centerHorizontal="true">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
                 android:text="Add An Item"
-                android:textSize="20dp"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginBottom="5dp"/>
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
             <TextView
-                android:src="@drawable/ic_camera"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textSize="14dp"
-                android:textColor="@color/black"
-                android:text="Enter the name and expiration date."
-                android:textStyle="bold"
                 android:layout_marginBottom="15dp"
-                />
+                android:src="@drawable/ic_camera"
+                android:text="Enter the name and expiration date."
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/fridge_add_ingredient_photo"
@@ -60,68 +59,59 @@
                 android:layout_height="150dp"
                 android:layout_marginBottom="15dp"
                 android:background="@color/platinum"
-                android:visibility="gone"
-                />
+                android:visibility="gone" />
 
             <ImageButton
                 android:id="@+id/fridge_add_ingredient_take_pic_button"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginBottom="15dp"
-                app:backgroundTint="@color/platinum"
-                app:tint="@color/orange"
                 android:src="@drawable/ic_camera_large"
-                />
+                app:backgroundTint="@color/platinum"
+                app:tint="@color/orange" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fridge_add_item_dialog_text1"
                 android:layout_width="240dp"
                 android:layout_height="wrap_content"
-                android:hint="Item Name"
-                android:layout_marginBottom="15dp">
+                android:layout_marginBottom="15dp"
+                android:hint="Item Name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/fridge_add_item_dialog_name_text"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
-
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/fridge_add_item_dialog_text2"
-                android:layout_width="240dp"
-                android:layout_height="wrap_content"
-                android:hint="MM/DD/YYYY"
-                android:layout_marginBottom="15dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/fridge_add_item_dialog_date_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
+                    android:layout_height="wrap_content" />
 
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
+                android:id="@+id/fridge_pick_date_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pick a date" />
+
+            <TextView
+                android:id="@+id/day_picked"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content" />
+
+            <Button
                 android:id="@+id/fridge_add_item_dialog_done_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:text="Done"
                 android:background="@drawable/rounded_border_radius_40"
-                />
+                android:text="Done" />
 
             <TextView
                 android:id="@+id/fridge_add_item_dialog_error_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:text="An item name and a valid date is required."
                 android:textColor="@color/red"
                 android:textSize="12dp"
-                android:layout_marginTop="15dp"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
 
         </LinearLayout>

@@ -24,7 +24,6 @@ import androidx.recyclerview.widget.*
 import java.util.*
 
 
-
 /**
  * A simple [Fragment] subclass.
  * Use the [FridgeHomeFragment.newInstance] factory method to
@@ -46,7 +45,6 @@ class FridgeHomeFragment : Fragment() {
         val rootView = inflater.inflate(R.layout.fragment_fridge_home, container, false)
 
         val orientation = resources.configuration.orientation
-
 
         adapter = FridgeListAdapter(requireContext())
         viewModel = ViewModelProvider(
@@ -73,7 +71,7 @@ class FridgeHomeFragment : Fragment() {
         rootView.findViewById<FloatingActionButton>(R.id.floating_add_ingredient_button).setOnClickListener {
             // pop up dialog for user to add item
             val dialog = FridgeAddItemFragment()
-            dialog.show(requireActivity().supportFragmentManager, TAG)
+            dialog.show(requireActivity().supportFragmentManager, "fridgeAddItem")
         }
 
         return rootView
