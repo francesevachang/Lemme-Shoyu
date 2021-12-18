@@ -1,15 +1,13 @@
+/**
+ * Pacy Wu: I wrote the SearchActivity class to inflate the action bar and add the navigation bar listener.
+ **/
+
 package edu.uw.peihsi5.lemmeshoyu
 
-import android.content.ActivityNotFoundException
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.TextView
-import com.google.android.material.slider.RangeSlider
 import com.google.android.material.tabs.TabLayout
-import java.lang.Math.round
+
 
 private const val TAG: String = ".SearchActivity"
 
