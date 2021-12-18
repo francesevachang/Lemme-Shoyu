@@ -1,5 +1,5 @@
 /**
- * Pacy Wu: We wrote the MyFridgeDatabase to build the database in companion object,
+ * Pacy Wu: I wrote the MyFridgeDatabase to build the database in companion object,
  * so there will only be one my fridge database throughout the app.
  **/
 

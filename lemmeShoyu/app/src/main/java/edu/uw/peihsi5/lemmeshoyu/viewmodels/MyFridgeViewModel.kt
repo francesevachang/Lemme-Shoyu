@@ -1,5 +1,5 @@
 /**
- * Frances Change and Pacy Wu: We wrote the MyFridgeViewModel class to keep track of the data
+ * Pacy Wu: I wrote the MyFridgeViewModel class to keep track of the data
  * in LiveData in my fridge database.
  **/
 
