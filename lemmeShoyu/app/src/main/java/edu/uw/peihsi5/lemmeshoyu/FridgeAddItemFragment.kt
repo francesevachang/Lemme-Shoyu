@@ -1,9 +1,12 @@
 package edu.uw.peihsi5.lemmeshoyu.dialogs
 
+import android.app.ActionBar
 import edu.uw.peihsi5.lemmeshoyu.R
 import android.app.Activity
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.Bitmap
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,8 +18,10 @@ import com.google.android.material.textfield.TextInputEditText
 import edu.uw.peihsi5.lemmeshoyu.database.my_fridge_database.Ingredient
 import edu.uw.peihsi5.lemmeshoyu.viewmodels.MyFridgeViewModel
 import android.provider.MediaStore
+import android.view.WindowManager
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.recyclerview.widget.GridLayoutManager
 import java.io.ByteArrayOutputStream
 
 private const val TAG = "FridgeAddItemDialogFragment"
@@ -34,8 +39,6 @@ class FridgeAddItemFragment(): DialogFragment() {
     private lateinit var imageByteArray: ByteArray
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
 
         rootView = inflater.inflate(R.layout.fragment_fridge_add_item, container, false)
 
@@ -75,30 +78,38 @@ class FridgeAddItemFragment(): DialogFragment() {
                 val errorTextView = rootView.findViewById<TextView>(R.id.fridge_add_item_dialog_error_msg)
                 errorTextView.visibility = View.VISIBLE
             }
-
         }
 
         return rootView
     }
 
+    /** Change dialog width and height **/
+    override fun onResume() {
+        super.onResume()
+        val params: ViewGroup.LayoutParams = dialog!!.window!!.attributes
+        params.width = RelativeLayout.LayoutParams.MATCH_PARENT
+        params.height = RelativeLayout.LayoutParams.WRAP_CONTENT
+        dialog!!.window!!.attributes = params as WindowManager.LayoutParams
+    }
+
+    /** Open android's camera **/
     fun openCamera() {
         val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         cameraLaucher.launch(takePictureIntent)
     }
 
+    /** After the user takes the photo, store the image to database and attach it to the image view. **/
     fun imageResultReceiver(requestCode: Int, resultCode: Int, data: Intent?) {
         val REQUEST_IMAGE_CAPTURE = 1
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
             val imageBitmap: Bitmap = data?.extras?.get("data") as Bitmap
 
             val stream = ByteArrayOutputStream()
-            val byteArray: ByteArray = stream.toByteArray() // store this
             imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
 
             val ingredientPhoto = rootView.findViewById<ImageView>(R.id.fridge_add_ingredient_photo)
             ingredientPhoto.setImageBitmap(imageBitmap)
             ingredientPhoto.visibility = View.VISIBLE
-
 
             imageByteArray = stream.toByteArray()
 
