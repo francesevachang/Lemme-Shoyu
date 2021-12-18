@@ -13,8 +13,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import edu.uw.peihsi5.lemmeshoyu.dialogs.ChooseFolderDialogFragment
@@ -54,8 +52,8 @@ class RecipeDetailFragment : Fragment() {
         Glide.with(rootView).load(recipe!!.imagePath).into(recipePhoto)
 
         rootView.findViewById<FloatingActionButton>(R.id.add_recipe_to_folder_button).setOnClickListener{
-            val dialog = ChooseFolderDialogFragment(recipe!!)
-            dialog.show(requireActivity().supportFragmentManager, "Choose Folder Dialog")
+            val dialog = ChooseFolderDialogFragment.newInstance(recipe!!)
+            dialog!!.show(requireActivity().supportFragmentManager, "Choose Folder Dialog")
         }
 
         // get the data for recipe's ingredients

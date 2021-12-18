@@ -21,12 +21,29 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import edu.uw.peihsi5.lemmeshoyu.database.Folder
 import edu.uw.peihsi5.lemmeshoyu.database.Recipe
+import edu.uw.peihsi5.lemmeshoyu.database.my_recipes_database.RecipeDatabase
 import edu.uw.peihsi5.lemmeshoyu.viewmodels.FolderViewModel
 import edu.uw.peihsi5.lemmeshoyu.viewmodels.RecipeViewModel
 
 private const val TAG = ".ChooseFolderDialogFragment"
 
-class ChooseFolderDialogFragment(private val recipe: edu.uw.peihsi5.lemmeshoyu.network.Recipe): DialogFragment() {
+/** The choose folder dialog fragment that allow the user to add the recipe to the folder **/
+class ChooseFolderDialogFragment(): DialogFragment() {
+
+    companion object {
+
+        /** Create an instance of ChooseFolderDialogFragment with the given recipe in a bundle **/
+        fun newInstance(recipe: edu.uw.peihsi5.lemmeshoyu.network.Recipe): ChooseFolderDialogFragment? {
+            val args = Bundle()
+            args.putString("recipe title", recipe.title)
+            args.putInt("recipe id", recipe.id)
+            args.putString("recipe image path", recipe.imagePath)
+            val f = ChooseFolderDialogFragment()
+            f.setArguments(args)
+            return f
+        }
+    }
+
 
     /** Inflate the fragment view and add the required listener to the element. **/
     override fun onCreateView(
@@ -74,10 +91,13 @@ class ChooseFolderDialogFragment(private val recipe: edu.uw.peihsi5.lemmeshoyu.n
                 // add the recipe to the selected folder
                 val recipeViewModel: RecipeViewModel by viewModels {
                     RecipeViewModelFactory(requireActivity().application, selectedFolder) }
-                recipeViewModel.insertRecipe(Recipe(this.recipe.id, this.recipe.title, this.recipe.imagePath, selectedFolder))
+                recipeViewModel.insertRecipe(Recipe(arguments!!.getInt("recipe id"),
+                    arguments!!.getString("recipe title").toString(),
+                    arguments!!.getString("recipe image path").toString(),
+                    selectedFolder))
 
                 // change folder image
-                folderViewModel.updateFolderImageUrl(selectedFolder, this.recipe.imagePath)
+                folderViewModel.updateFolderImageUrl(selectedFolder, arguments!!.getString("recipe image path").toString())
 
                 this.dismiss()
             }

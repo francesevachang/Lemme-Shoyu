@@ -25,6 +25,7 @@ import edu.uw.peihsi5.lemmeshoyu.viewmodels.FolderViewModel
 
 private const val TAG = ".AddFolderDialogFragment"
 
+/** The dialog fragment that allows the user to create new folder **/
 class AddFolderDialogFragment(): DialogFragment() {
 
     /** Inflate the fragment view and add the required listener to the element. **/
