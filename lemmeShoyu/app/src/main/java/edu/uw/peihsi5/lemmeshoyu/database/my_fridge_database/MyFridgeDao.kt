@@ -1,5 +1,5 @@
 /**
- * Frances Chang and Pacy Wu: We wrote the MyFridgeDao to query, insert data,
+ * Pacy Wu: We wrote the MyFridgeDao to query, insert data,
  * and delete data in the local database.
  **/
 

@@ -102,21 +102,16 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/fridge_add_item_dialog_text2"
-                    android:layout_width="240dp"
+                <Button
+                    android:id="@+id/fridge_pick_date_btn"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="MM/DD/YYYY"
-                    android:layout_marginBottom="15dp">
+                    android:text="Pick a date" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/fridge_add_item_dialog_date_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
+                <TextView
+                    android:id="@+id/day_picked"
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content" />
 
                 <Button
                     android:id="@+id/fridge_add_item_dialog_done_btn"
@@ -130,11 +125,11 @@
                     android:id="@+id/fridge_add_item_dialog_error_msg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Please enter correct format of the expire date in MM/DD/YYYY."
+                    android:layout_marginTop="15dp"
+                    android:text="An item name and a valid date is required."
                     android:textColor="@color/red"
                     android:textSize="12dp"
-                    android:layout_marginTop="15dp"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
             </LinearLayout>
     </LinearLayout>
