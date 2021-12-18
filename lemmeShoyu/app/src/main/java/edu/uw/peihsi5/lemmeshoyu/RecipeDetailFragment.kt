@@ -1,3 +1,7 @@
+/**
+ * Christine Tang: I wrote the class RecipeDetailFragment to show the recipe's information
+ * which includes recipe's photo, title, ingredients, and steps to make the dish.
+ **/
 package edu.uw.peihsi5.lemmeshoyu
 
 import android.os.Bundle
@@ -27,7 +31,7 @@ class RecipeDetailFragment : Fragment() {
     private val API_KEY = "1e988a60e7124915bea379c4980ec1fa"
     private val TAG = "RecipeDetailFragment"
 
-
+    //connect to the fragment's argument
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val args: RecipeDetailFragmentArgs by navArgs()
@@ -36,14 +40,17 @@ class RecipeDetailFragment : Fragment() {
 
     }
 
+    //Inflate the fragment view, and get the data of recipe's photo, title, ingredients,
+    // and steps to make the dish.
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_recipe_detail, container, false)
+        // get the data for recipe's title
         rootView.findViewById<TextView>(R.id.recipe_title).text = recipe!!.title
         val recipePhoto: ImageView = rootView.findViewById<ImageView>(R.id.recipe_photo)
+        // get the data for recipe's photo
         Glide.with(rootView).load(recipe!!.imagePath).into(recipePhoto)
 
         rootView.findViewById<FloatingActionButton>(R.id.add_recipe_to_folder_button).setOnClickListener{
@@ -51,7 +58,7 @@ class RecipeDetailFragment : Fragment() {
             dialog.show(requireActivity().supportFragmentManager, "Choose Folder Dialog")
         }
 
-
+        // get the data for recipe's ingredients
         RecipeApi.retrofitService.getIngredient(recipe!!.id, API_KEY)
             .enqueue(object : Callback<Ingredients> {
                 override fun onResponse(
@@ -90,6 +97,8 @@ class RecipeDetailFragment : Fragment() {
 
             })
 
+
+        // get the data for recipe's steps
         RecipeApi.retrofitService.getStep(recipe!!.id, API_KEY)
             .enqueue(object : Callback<List<StepsResponse>> {
                 override fun onResponse(

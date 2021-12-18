@@ -1,4 +1,8 @@
-
+/**
+ * Christine Tang: I wrote the class SearchRecipeFragment which allows users to
+ * search recipes by any keywords and will show a list of results that contains
+ * the recipe's title and photo.
+ **/
 package edu.uw.peihsi5.lemmeshoyu
 
 import android.os.Bundle
@@ -12,7 +16,6 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
@@ -22,17 +25,10 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import edu.uw.peihsi5.lemmeshoyu.network.Recipe
-import edu.uw.peihsi5.lemmeshoyu.network.RecipeApi
-import edu.uw.peihsi5.lemmeshoyu.network.RecipeSearchResponse
 import edu.uw.peihsi5.lemmeshoyu.viewmodels.SearchRecipeViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-
 
 class SearchRecipeFragment : Fragment() {
     private val TAG = "SearchRecipeFragment"
-    private val API_KEY = "594baa11072841208ee7ad173fedd4dc"
     private lateinit var searchAdapter: SearchListAdapter
     private lateinit var viewModel: SearchRecipeViewModel
 
@@ -43,6 +39,8 @@ class SearchRecipeFragment : Fragment() {
 
     }
 
+    //Inflate the fragment view, get the data from the viewmodel to the recycler view,
+    // and add the listener to the search button
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -66,8 +64,9 @@ class SearchRecipeFragment : Fragment() {
         recycler.layoutManager = LinearLayoutManager(activity)
         recycler.adapter = searchAdapter
 
-        rootView.findViewById<Button>(R.id.search).setOnClickListener{
 
+
+        rootView.findViewById<Button>(R.id.search).setOnClickListener{
             val input = rootView.findViewById<EditText>(R.id.edit_input).text.toString()
             Log.v(TAG, "Searching recipes for $input")
             viewModel.searchRecipes(input)
@@ -79,16 +78,15 @@ class SearchRecipeFragment : Fragment() {
     }
 
 
-
+    // the adapter for search result's recycler view
     inner class SearchListAdapter(): ListAdapter<Recipe, SearchListAdapter.RecipeViewHolder>(RecipeSearchDiffCallback()){
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
             val inflatedView = LayoutInflater.from(parent.context).inflate(
-                R.layout.list_item_recipe, //this xml
+                R.layout.list_item_recipe,
                 parent,
                 false
             )
-            //return ViewHolder(inflatedView)
             return RecipeViewHolder(inflatedView)
         }
 
@@ -99,7 +97,6 @@ class SearchRecipeFragment : Fragment() {
         inner class RecipeViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
             val recipeText: TextView = itemView.findViewById<TextView>(R.id.recipe_text)
             val recipePhoto: ImageView = itemView.findViewById<ImageView>(R.id.recipe_photo)
-
 
             fun bind(recipe: Recipe) {
                 Glide.with(itemView.context).load(recipe.imagePath).into(recipePhoto)
@@ -117,9 +114,7 @@ class SearchRecipeFragment : Fragment() {
     }
 
 
-
-
-
+    // callback function for the search adapter
     inner class RecipeSearchDiffCallback : DiffUtil.ItemCallback<Recipe>() {
         override fun areItemsTheSame(oldItem: Recipe, newItem: Recipe): Boolean {
             return oldItem.id == newItem.id

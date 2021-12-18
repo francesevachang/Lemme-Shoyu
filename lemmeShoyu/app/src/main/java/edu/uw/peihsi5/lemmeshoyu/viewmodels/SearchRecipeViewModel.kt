@@ -1,9 +1,15 @@
+/**
+ * Christine Tang: I wrote the SearchRecipeViewModel class to get and store the search response result
+ * in LiveData.
+ **/
 package edu.uw.peihsi5.lemmeshoyu.viewmodels
 
 import android.util.Log
+import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import edu.uw.peihsi5.lemmeshoyu.R
 import edu.uw.peihsi5.lemmeshoyu.network.Recipe
 import edu.uw.peihsi5.lemmeshoyu.network.RecipeApi
 import edu.uw.peihsi5.lemmeshoyu.network.RecipeSearchResponse
@@ -19,6 +25,7 @@ class SearchRecipeViewModel : ViewModel() {
     val recipeData: LiveData<List<Recipe>>
     get() = _recipeData
 
+    // get the result by search for recipes and store the result in LiveData
     fun searchRecipes(query:String){
         RecipeApi.retrofitService.searchRecipe(query, API_KEY).enqueue(object:
             Callback<RecipeSearchResponse> {
